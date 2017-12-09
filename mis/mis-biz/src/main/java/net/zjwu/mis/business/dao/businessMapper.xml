@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.zjwu.mis.business.dao.businessMapper" >
+  <resultMap id="BaseResultMap" type="net.zjwu.mis.business.model.EquipmentInfo" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="sort_id" property="sortId" jdbcType="VARCHAR" />
+    <result column="brand" property="brand" jdbcType="VARCHAR" />
+    <result column="model" property="model" jdbcType="VARCHAR" />
+    <result column="equipment_type" property="equipmentType" jdbcType="VARCHAR" />
+    <result column="beginning_date" property="beginningDate" jdbcType="DATE" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+    <result column="standard" property="standard" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="INTEGER" />
+    <result column="factory" property="factory" jdbcType="VARCHAR" />
+    <result column="factory_number" property="factoryNumber" jdbcType="INTEGER" />
+    <result column="date_of_production" property="dateofProduction" jdbcType="DATE" />
+    <result column="date_of_buy" property="dateofBuy" jdbcType="DATE" />
+    <result column="destroyed_date" property="destoryedDate" jdbcType="DATE" />
+    <result column="date_of_remove" property="dateofRemove" jdbcType="DATE" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="DATE" />
+    <result column="update_date" property="updateDate" jdbcType="DATE" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    id, sort_id, brand, model, model_type, beginning_date, address, state, remark, create_date, 
+    update_date, create_by, update_by
+  </sql>
+  <select id="getEquipmentInfoByBrand" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select * from t_t_equipment_info where sort_id=#{sortId} and brand=#{brand}
+  </select>
+  <delete id="deleteByNo" parameterType="java.lang.String">
+  	delete from t_t_test where brand=#{brand}
+  </delete>
+</mapper>

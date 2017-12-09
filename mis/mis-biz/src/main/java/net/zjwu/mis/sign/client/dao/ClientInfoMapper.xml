@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.zjwu.mis.sign.client.dao.ClientInfoMapper">
+  <resultMap id="BaseResultMap" type="net.zjwu.mis.sign.client.model.ClientInfo">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="cname" jdbcType="VARCHAR" property="cname" />
+    <result column="project_class" jdbcType="VARCHAR" property="projectClass" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="qnumber" jdbcType="VARCHAR" property="qnumber" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="cnumber" jdbcType="VARCHAR" property="cnumber" />
+    <result column="open_id" jdbcType="VARCHAR" property="openId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbggenerated
+    -->
+    id, cname, project_class, phone, qnumber, email, cnumber, open_id
+  </sql>
+</mapper>
