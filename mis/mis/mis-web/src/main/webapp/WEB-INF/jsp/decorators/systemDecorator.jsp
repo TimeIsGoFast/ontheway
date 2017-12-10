@@ -62,33 +62,18 @@
                 <ul class="nav" id="main-menu">
 
                     <li>
-                        <a class="active-menu" href="${pageContext.request.contextPath}/index.do" id="dashboard"><i class="fa fa-dashboard"></i>主页</a>
+                        <a id="_index" href="${pageContext.request.contextPath}/index.do" id="dashboard"><i class="fa fa-dashboard"></i>主页</a>
                     </li>
                     <li>
                         <a href="${pageContext.request.contextPath}/user/render.do" id="userManage"><i class="fa fa-users"></i>用户管理</a>
                     </li>
-						 <li>
-                        <a href="#" id="bookInfo"><i class="fa fa-book"></i>书籍管理<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="${pageContext.request.contextPath}/book/render.do">书籍信息</a>
-                            </li>
-                           <!--  <li>
-                                <a href="morris-chart.html"></a>
-                            </li> -->
-							</ul>
-						</li>	
-						 <li>
-                        <a href="#"><i class="fa fa-map-marker"></i>旅行管理<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="chart.html">旅行地点</a>
-                            </li>
-                            <li>
-                                <a href="morris-chart.html">旅行攻略</a>
-                            </li>
-							</ul>
-						</li>		
+                     <li>
+                        <a href="${pageContext.request.contextPath}/book/render.do" id="bookInfo"><i class="fa fa-book"></i>书籍管理</a>
+                    </li>
+                    <li>
+                        <a href="${pageContext.request.contextPath}/book/render.do" id="touristInfo"><i class="fa fa-map-marker"></i>旅行管理</a>
+                    </li>
+				
                     <li>
                         <a href="tab-panel.html"><i class="fa fa-edit"></i>添加美句</a>
                     </li>

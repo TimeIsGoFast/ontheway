@@ -26,7 +26,9 @@ public class BookController extends BaseController<Book> {
       }
       
       @RequestMapping("/bookDetail/{id}")
-      public String bookDeatil(@PathVariable int id){
+      public String bookDeatil(@PathVariable int id,Model model){
+    	  Book book = bookService.selectByKey(id);
+    	  model.addAttribute("Book", book);
     	  return "system/book/book_detail";
       }
       

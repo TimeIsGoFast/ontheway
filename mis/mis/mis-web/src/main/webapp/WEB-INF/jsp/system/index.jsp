@@ -348,7 +348,7 @@
 	<script src="${pageContext.request.contextPath}/static/assets/js/easypiechart-data.js"></script>
 	
 	 <script src="${pageContext.request.contextPath}/static/assets/js/Lightweight-Chart/jquery.chart.js"></script>
-	
+	  <script src="${pageContext.request.contextPath}/static/js/index.js"></script>
     <!-- Custom Js -->
     <script src="${pageContext.request.contextPath}/static/assets/js/custom-scripts.js"></script>
 
@@ -356,6 +356,9 @@
     <!-- Chart Js -->
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/assets/js/chart.min.js"></script>  
     <script type="text/javascript" src="${pageContext.request.contextPath}/static/assets/js/chartjs.js"></script> 
-   
+   <script type="text/javascript">
+
+</script>
 </body>
+
 </html>

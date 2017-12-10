@@ -11,12 +11,11 @@
      <!-- TABLE STYLES-->
     <link href="${pageContext.request.contextPath}/static/assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 </head>
-
-
 		  <div class="header"> 
-                    <h1 class="page-header">
-                    </h1>
-                    
+              <h1 class="page-header">
+                  <a href="#" class="btn btn-info">添加书籍</a>
+              </h1>
+     
 		 </div>
             <div class="row">
                 <div class="col-md-12">
