@@ -13,7 +13,7 @@
 </head>
 		  <div class="header"> 
               <h1 class="page-header">
-                  <a href="#" class="btn btn-info">添加书籍</a>
+                  <a href="${pageContext.request.contextPath }/book/bookDetail/0.do" class="btn btn-info">添加书籍</a>
               </h1>
      
 		 </div>
