@@ -76,7 +76,7 @@
                     </li>
 				
                     <li>
-                        <a href="tab-panel.html"><i class="fa fa-edit"></i>添加美句</a>
+                        <a href="${pageContext.request.contextPath}/book/getSentencePage.do" id="sentence"><i class="fa fa-edit"></i>添加美句</a>
                     </li>
                     
                     <li>

@@ -3,6 +3,7 @@ package net.zjwu.mis.business.controller;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,17 +11,27 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.PageInfo;
+
 import net.zjwu.mis.base.controller.BaseController;
 import net.zjwu.mis.business.constans.Constans;
 import net.zjwu.mis.business.model.Book;
+import net.zjwu.mis.business.model.Sentence;
 import net.zjwu.mis.business.service.BookService;
+import net.zjwu.mis.business.service.SentenceService;
 import net.zjwu.mis.business.vo.ResultVo;
+import net.zjwu.mis.system.service.UserService;
 
 @RequestMapping("/book")
 @Controller
 public class BookController extends BaseController<Book> {
       @Autowired
       private BookService bookService;
+      @Autowired
+      private SentenceService sentenceService;
+      
+      @Autowired
+      private UserService userService;
       
       @RequestMapping("/render")
       public String render(Model model){
@@ -72,4 +83,40 @@ public class BookController extends BaseController<Book> {
     	  }
     	  return rs;
       }
+      
+      //得到页面
+      @RequestMapping("getSentencePage")
+      public String getSentencePage(){
+    	  return "system/book/sentence";
+      }
+      
+      @RequestMapping("/getSentenceData")
+      @ResponseBody
+      public List<Sentence> getSentenceData(int rows,int page){
+    	  return sentenceService.getPage(rows,page).getList();
+      }
+      
+      //添加句子页面
+      @RequestMapping("/addSentence")
+      @ResponseBody
+      public ResultVo addSentence(String content){
+    	  Sentence sentence = new Sentence();
+    	  ResultVo rs = new ResultVo();
+    	  rs.setCode(Constans.RESULT_SUCCESS);
+    	  rs.setMessage("success");
+    	  sentence.setCreatTime(new Date());
+    	  sentence.setContent(content);
+    	  String uid = (String)SecurityUtils.getSubject().getPrincipal();
+    	  String name = userService.getUserByUid(uid).getName();
+    	  sentence.setUid(name);
+    	  try{
+    	  sentenceService.save(sentence);
+    	  }catch(Exception e){
+    		  rs.setCode(Constans.RESULT_FAIL);
+    		  rs.setMessage("save fail");
+    	  }
+    	  return rs;
+      }
+      
+      
 }
