@@ -16,8 +16,8 @@
 <body>
 <div class="message">
     <img src="${pageContext.request.contextPath}/static/images/logo1.png">
-    <p class="p2">SUNSHINE</p>
-    <p class="p1">成为一个阳光的人、正直的人</p>
+    <p class="p2">ONTEHWAY</p>
+    <p class="p1">身体和灵魂，总要有一个在路上</p>
 </div>
 <div class="navs-slider">
     <a href="#" onclick="_login()" id="nav_login">登录</a>
@@ -57,6 +57,8 @@
 <script src="${pageContext.request.contextPath}/static/js/jquery-2.1.1.min.js"></script>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/static/js/jquery.easyui.min.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/static/js/login.js"></script>
 <script>
     //登录选择
     function _login(){
@@ -80,26 +82,7 @@
 	var successUrl = 'index.do';
 	
 	function login() {
-   /*  var username=$("#username");
-    var password=$("#password");
-	   $.ajax({
-		   type:'post',
-		   data:{'username':username,'password':password},
-		   url:loginUrl,
-		   dataType:'json',
-		   success:function(result){
-			   var result = eval('(' + result + ')');
-			   if(result.success){
-				   window.location = successUrl;
-			   }else{
-				   
-				   alert("登陆失败");
-			   }
-		   },
-		   error:function(){
-			   alert("请求失败");
-		   }
-	   }) */
+
 		$('#fm').form('submit', {
 			url : loginUrl,
 			onSubmit : function() {
@@ -116,51 +99,8 @@
 		});
 	}   
 	//注册
-	function register_button(){
-		var uid = $("#_uid").val();
-		var name = $("#_name").val();
-		var pwd = $("#_password").val();
-		var reg = /^[0-9A-Za-z]{6,}$/;
-	
-		if(!uid.match("\\d+")){
-			$(".error_message").text("账号必须为数字！");
-			return;
-		}
-		if(!reg.test(pwd)){
-			$(".error_message").text("密码长度不小于六位！");
-			return;
-		}
-		
-		$.ajax({
-			type:'post',
-			url:'${pageContext.request.contextPath}/user/register.do',
-			data:$("#register_form").serialize(),
-			dataType:'json',
-			success:function(result){
-				var info = parseInt(result);
-				if (info==1) {
-					$("#username").val(uid);
-					$("#password").val(pwd);
-					_login();
-					
-					
-				} else {			
-					$(".error_message").text("该账号已被注册！");
-				}
-				
-			},
-			error:function(){
-				$(".error_message").text("出现未知错误！");
-			}
-			
-			
-		
-		});
-		
-		
-	}
 
-	
+	var path = '${pageContext.request.contextPath}';
 
 </script>
 </html>

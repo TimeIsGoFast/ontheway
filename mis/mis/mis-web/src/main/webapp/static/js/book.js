@@ -6,7 +6,7 @@
 	
 	
 });
- function deleteUser(id){
+ function _deleteBook(id){
 	    $("#deleteUserId").val(id);
 		$('#deleteModal').modal('show');
 }
@@ -15,15 +15,15 @@ function bookDetail(id){
 	window.location.href=path+"/book/bookDetail/"+id+".do";
 }
  $(function(){
-	$("#deleteUser2").click(function(){
+	$("#deleteBook2").click(function(){
 		var id = $("#deleteUserId").val();
 		$.ajax({
 			type:'post',
-			url:path+'/user/deleteUser.do',
+			url:path+'/book/deleteBook.do',
 			data:{'id':id},
 			dataType:'json',
 			success:function(data){
-				if(data==1){
+				if(data.code==1){
 					$('#deleteModal').modal('hide');
 					window.location.reload();
 				}

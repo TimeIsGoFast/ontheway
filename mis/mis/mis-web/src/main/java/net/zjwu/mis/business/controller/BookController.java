@@ -118,5 +118,19 @@ public class BookController extends BaseController<Book> {
     	  return rs;
       }
       
+      //deleteBook
+      @RequestMapping("/deleteBook")
+      @ResponseBody
+      public ResultVo deleteBook(int id){
+    	  ResultVo rs = new ResultVo();
+    	  rs.setCode(Constans.RESULT_SUCCESS);
+    	  try{
+    		  bookService.delete(id);
+    	  }catch(Exception e){
+    		  rs.setCode(Constans.RESULT_FAIL);
+    	  }
+    	  return rs;
+      }
+      
       
 }

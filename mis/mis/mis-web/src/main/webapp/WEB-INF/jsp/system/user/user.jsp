@@ -33,7 +33,7 @@
                                             <th>邮箱</th>
                                             <th>性别</th>
                                             <th>联系方式</th>
-                                            <th>创建时间</th>
+                                            <th>是否启用</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
@@ -53,7 +53,7 @@
                                              <td></td>
                                              </c:if>
                                             <td class="center">${User.tel }</td>
-                                            <td class="center">${User.createDate }</td>
+                                            <td class="center">${User.enabled}</td>
                                             <td align="center">
                                             <button class="btn btn-primary" title='编辑' data-toggle="modal" data-target="#myModal"><i class="fa fa-edit "></i></button>
                                             <button class="btn btn-danger" title='删除' onclick="deleteUser('${User.id}')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>

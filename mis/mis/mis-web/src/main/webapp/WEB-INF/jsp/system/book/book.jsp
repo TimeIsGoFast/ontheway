@@ -48,7 +48,7 @@
                                             <td class="center">${Book.grade }</td>
                                             <td align="center">
                                             <button class="btn btn-primary" title='详情' onclick="bookDetail('${Book.id}')" data-toggle="modal" data-target="#myModal"><i class="fa fa-book "></i></button>
-                                            <button class="btn btn-danger" title='删除' onclick="deleteUser('${Book.id}')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                            <button class="btn btn-danger" title='删除' onclick="_deleteBook('${Book.id}')"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                                             </td>
                                         </tr>
                                          </c:forEach>
@@ -74,7 +74,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                            <button type="button" class="btn btn-primary" id="deleteUser2">确认</button>
+                                            <button type="button" class="btn btn-primary" id="deleteBook2">确认</button>
                                         </div>
                                     </div>
                                 </div>

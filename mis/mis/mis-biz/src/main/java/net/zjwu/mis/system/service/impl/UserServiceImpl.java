@@ -8,7 +8,9 @@ import java.util.List;
 import net.zjwu.mis.base.service.ExampleBuilder;
 import net.zjwu.mis.base.service.impl.BaseServiceImpl;
 import net.zjwu.mis.system.dao.UserMapper;
+import net.zjwu.mis.system.dao.UserRoleMapper;
 import net.zjwu.mis.system.model.User;
+import net.zjwu.mis.system.model.UserRole;
 import net.zjwu.mis.system.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,9 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 	
 	@Autowired
 	private UserMapper userMapper;
+	
+	@Autowired
+	private UserRoleMapper userRoleMapper;
 
 	
 	/* (non-Javadoc)
@@ -66,6 +71,17 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 		PageHelper.startPage(page, pageSize);
 		List<User> users = userMapper.selectByExample(example);
 		return new PageInfo<User>(users);
+	}
+
+	/**
+	 * 添加默认角色
+	 */
+	@Override
+	public void initUserRole(Integer id, int i) {
+		UserRole userRole = new UserRole();
+		userRole.setUserId(id);
+		userRole.setRoleId(i);
+		userRoleMapper.insert(userRole);
 	}
 	
 	

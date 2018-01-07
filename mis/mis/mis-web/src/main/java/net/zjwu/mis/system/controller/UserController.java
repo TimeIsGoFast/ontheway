@@ -3,13 +3,8 @@
  */
 package net.zjwu.mis.system.controller;
 
+import java.util.Date;
 import java.util.List;
-
-import net.zjwu.mis.base.controller.BaseController;
-import net.zjwu.mis.system.model.User;
-import net.zjwu.mis.system.service.UserRoleService;
-import net.zjwu.mis.system.service.UserService;
-import net.zjwu.mis.system.vo.Result;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +15,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.PageInfo;
+
+import net.zjwu.mis.base.controller.BaseController;
+import net.zjwu.mis.business.vo.ResultVo;
+import net.zjwu.mis.system.model.User;
+import net.zjwu.mis.system.service.UserRoleService;
+import net.zjwu.mis.system.service.UserService;
+import net.zjwu.mis.system.vo.Result;
 
 /**
  * @author Lay
@@ -79,5 +81,36 @@ public class UserController extends BaseController<User> {
 	@ResponseBody
 	public int deleteUser(int id){
 		return userService.delete(id);
+	}
+	
+	//注册
+	@RequestMapping("/register")
+	@ResponseBody
+	public ResultVo register(Model model ,User user){
+		ResultVo rs = new ResultVo();
+		try{
+		User user2 = userService.getUserByUid(user.getUid());
+		if(user2 == null){
+			Date date = new Date();
+			user.setEnabled("Y");
+			user.setCreateBy(user.getUid());
+			user.setCreateDate(date);
+			user.setUpdateBy(user.getUid());
+			user.setUpdateDate(date);
+			int info = userService.save(user);
+			User user3 = userService.getUserByUid(user.getUid());
+			userService.initUserRole(user3.getId(),3);
+			model.addAttribute("user",user);
+			rs.setCode(info);
+			rs.setMessage("save success");
+		}else{
+			rs.setCode(0);
+			rs.setMessage("account have already exsist");
+		}
+		}catch(Exception e){
+			rs.setCode(0);
+			rs.setMessage("save faild");
+		}
+		return rs;
 	}
 }

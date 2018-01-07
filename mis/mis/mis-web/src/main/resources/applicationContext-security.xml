@@ -46,6 +46,7 @@
 			<value>
 			    /**/desk/**=anon
 			    /anon/** = anon
+			    /user/register**=anon
 				/static/** =anon
 				/renderLogin**=anon
 				/login** = anon
