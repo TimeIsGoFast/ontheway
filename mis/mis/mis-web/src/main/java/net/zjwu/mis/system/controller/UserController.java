@@ -97,11 +97,12 @@ public class UserController extends BaseController<User> {
 			user.setCreateDate(date);
 			user.setUpdateBy(user.getUid());
 			user.setUpdateDate(date);
-			int info = userService.save(user);
+			user.setRemark("desk");
+		    userService.save(user);
 			User user3 = userService.getUserByUid(user.getUid());
 			userService.initUserRole(user3.getId(),3);
 			model.addAttribute("user",user);
-			rs.setCode(info);
+			rs.setCode(1);
 			rs.setMessage("save success");
 		}else{
 			rs.setCode(0);
