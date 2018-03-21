@@ -72,7 +72,7 @@
                         <a href="${pageContext.request.contextPath}/book/render.do" id="bookInfo"><i class="fa fa-book"></i>书籍管理</a>
                     </li>
                     <li>
-                        <a href="${pageContext.request.contextPath}/book/render.do" id="touristInfo"><i class="fa fa-map-marker"></i>旅行管理</a>
+                        <a href="${pageContext.request.contextPath}/travel/render.do" id="touristInfo"><i class="fa fa-map-marker"></i>旅行管理</a>
                     </li>
 				
                     <li>
@@ -80,7 +80,7 @@
                     </li>
                     
                     <li>
-                        <a href="table.html"><i class="fa fa-table"></i>管理员审核</a>
+                        <a href="#"><i class="fa fa-table"></i>管理员审核</a>
                     </li>
                
                    

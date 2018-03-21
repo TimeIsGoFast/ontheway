@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$("#bookInfo").addClass("active-menu");
+	$("#touristInfo").addClass("active-menu");
 	 var selectValue=  $("#gradeSelectHidden").val();
 	 if(selectValue!=""){
 	 $("#gradeSelect").val(selectValue);

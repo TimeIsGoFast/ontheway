@@ -1,18 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<link rel="stylesheet" href="css/bootstrap.css" />
-		<link rel="stylesheet" href="css/templet.css"/>
-		<link rel="stylesheet" href="css/footer&cbl.css" />
-		<link rel="stylesheet" href="css/daohang.css" />
-		<script type="text/javascript" src="js/jquery-2.1.1.min.js" ></script>		
-		<script type="text/javascript" src="js/bootstrap.js" ></script>
-		<script type="text/javascript" src="js/book.js" ></script>
-		<script type="text/javascript" src="js/templet.js"></script>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/static/desk/css/bootstrap.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/static/desk/css/templet.css"/>
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/static/desk/css/footer&cbl.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/static/desk/css/daohang.css" />
+		<script type="text/javascript" src="${pageContext.request.contextPath}/static/desk/js/jquery-2.1.1.min.js" ></script>		
+		<script type="text/javascript" src="${pageContext.request.contextPath}/static/desk/js/bootstrap.js" ></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/static/desk/js/book.js" ></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/static/desk/js/templet.js"></script>
 		<title></title>
 	</head>
 	<body>
@@ -24,12 +25,12 @@
 						<button type="button" class="zd" id="zd" >
 							<span class="glyphicon glyphicon-align-justify"></span>
 						</button>
-						<a href="#" class="navbar-brand"><img src="img/logo.png"/></a>
+						<a href="#" class="navbar-brand"><img src="${pageContext.request.contextPath}/static/desk/img/logo.png"/></a>
 					</div>
 					<div class="collapse navbar-collapse" id="daohangtiao">
 						<ul class="nav navbar-nav">
-							<li><a href="index.html">首页</a></li>
-							<li><a href="book.html">爱读书</a></li>
+							<li><a href="${pageContext.request.contextPath}/index.do">首页</a></li>
+							<li><a href="${pageContext.request.contextPath}/deskBook/render.do">爱读书</a></li>
 							<li><a href="travel.html">去旅行</a></li>
 							<li><a href="travel.html">小贴士</a></li>
 							
@@ -68,8 +69,8 @@
 								
 						</ul>
 						<ul class="zcdl nav navbar-nav pull-right">
-							<li><a href="login.html">登录</a></li>
-							<li><a href="register.html">注册</a></li>
+								<li id="helloname"><a href="#">${user.name}</a></li>
+							<li id="tuichu"><a href="${pageContext.request.contextPath}/logout.do">退出</a></li>
 						</ul>
 					</div>					
 				</div>
@@ -83,9 +84,9 @@
 					<div class="b1">
 						 <div class="col-lg-12" >
 						    <div class="input-group col-lg-6" style="margin:auto;">
-						      <input type="text" class="form-control" placeholder="输入书名、作者">
+						      <input type="text" class="form-control" id="searchBook" placeholder="输入书名、作者">
 						      <span class="input-group-btn">
-						        <button class="btn btn-info" type="button"><a class="glyphicon glyphicon-search"></a></button>
+						        <button class="btn btn-info" type="button" id="btn_search"><a class="glyphicon glyphicon-search"></a></button>
 						      </span>
 					
 						    </div>
@@ -100,121 +101,55 @@
 			<div class="main2 container">
 				<div class="col-lg-12 ">
 					<div class="col-lg-3 border">
-					  <ul class="book_biaoqian">
-					    <li><a href="#">小说</a></li>
-					    <li><a href="#">随笔</a></li>
-					    <li><a href="#">编程</a></li>
-					    <li><a href="#">散文</a></li>
-					    <li><a href="#">诗歌</a></li>
-					    <li><a href="#">童话</a></li>
-					    <li><a href="#">漫画</a></li>
-					    <li><a href="#">推理</a></li>
-					    <li><a href="#">绘本</a></li>
-					    <li><a href="#">青春</a></li>
-					    <li><a href="#">科幻</a></li>
-					    <li><a href="#">言情</a></li>
-					    <li><a href="#">奇幻</a></li>
-					    <li><a href="#">武侠</a></li>
-					    <li><a href="#">历史</a></li>
-					    <li><a href="#">哲学</a></li>
-					    <li><a href="#">传记</a></li>
-					    <li><a href="#">设计</a></li>
-					    <li><a href="#">建筑</a></li>
-					    <li><a href="#">电影</a></li>
-					    <li><a href="#">管理</a></li>
-					    <li><a href="#">音乐</a></li>
-					    <li><a href="#">旅行</a></li>
-					    <li><a href="#">励志</a></li>
-					    <li><a href="#">职场</a></li>
-					    <li><a href="#">教育</a></li>
-					    <li><a href="#">美食</a></li>
-					    <li><a href="#">灵修</a></li>
-					    <li><a href="#">健康</a></li>
-					    <li><a href="#">家居</a></li>
-					    <li><a href="#">互联网</a></li>
-					    <li><a href="#">科普</a></li>
+					  <ul id="book_biaoqian">
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=1">小说</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=2">随笔</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=3">编程</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=4">散文</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=5">诗歌</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=6">童话</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=7">漫画</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=8">推理</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=9">绘本</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=10">青春</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=11">科幻</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=12">言情</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=13">奇幻</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=14">武侠</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=15">历史</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=16">哲学</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=17">传记</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=18">设计</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=19">建筑</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=20">电影</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=21">管理</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=22">音乐</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=23">旅行</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=24">励志</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=25">职场</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=26">教育</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=27">美食</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=28">灵修</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=29">健康</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=30">家居</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=31">互联网</a></li>
+					    <li><a href="${pageContext.request.contextPath}/deskBook/bookType.do?key=32">科普</a></li>
 					   
 					  </ul>
 					</div>
-					<div class="col-lg-9 border ">
-					    <table id="table1">
-                           <tr>
-								<td>
-									<div>
-									<a href="#"><img src="img/book/book1.jpg"></a>
-									  <p><a href="#">刺杀骑士团长</a></p>
-									  <p>春上春树</p>
-									</div>
-								</td>
-								<td>
-									<div>
-									<a href="#"><img src="img/book/book2.jpg"></a>
-									  <p><a href="#">刺杀骑士团长</a></p>
-									  <p>春上春树</p>
-									</div>
-								</td>
-								<td>
-									<div>
-									<a href="#"><img src="img/book/book3.jpg"></a>
-									  <p><a href="#">刺杀骑士团长</a></p>
-									  <p>春上春树</p>
-									</div>
-								</td>
-								<td>
-									<div>
-									<a href="#"><img src="img/book/book4.jpg"></a>
-									  <p><a href="#">刺杀骑士团长</a></p>
-									  <p>春上春树</p>
-									</div>
-								</td>
-								<td>
-									<div>
-									<a href="#"><img src="img/book/book5.jpg"></a>
-									  <p><a href="#">刺杀骑士团长</a></p>
-									  <p>春上春树</p>
-									</div>
-								</td>
-
-                           </tr>
-                           <tr>
-								<td>
-									<div>
-									<a href="#"><img src="img/book/book6.jpg"></a>
-									  <p><a href="#">刺杀骑士团长</a></p>
-									  <p>春上春树</p>
-									</div>
-								</td>
-								<td>
-									<div>
-									<a href="#"><img src="img/book/book7.jpg"></a>
-									  <p><a href="#">刺杀骑士团长</a></p>
-									  <p>春上春树</p>
-									</div>
-								</td>
-								<td>
-									<div>
-									<a href="#"><img src="img/book/book8.jpg"></a>
-									  <p><a href="#">刺杀骑士团长</a></p>
-									  <p>春上春树</p>
-									</div>
-								</td>
-								<td>
-									<div>
-									<a href="#"><img src="img/book/book9.jpg"></a>
-									  <p><a href="#">刺杀骑士团长</a></p>
-									  <p>春上春树</p>
-									</div>
-								</td>
-								<td>
-									<div>
-									<a href="#"><img src="img/book/book10.jpg"></a>
-									  <p><a href="#">刺杀骑士团长</a></p>
-									  <p>春上春树</p>
-									</div>
-								</td>
-
-                           </tr>
-					    </table>
+					<div class="col-lg-9 border " id="manybook">
+					   <ul>
+					     <c:forEach items="${books}" var="Book">
+					     <li>
+			     			<div>
+							<a href="${pageContext.request.contextPath}/deskBook/bookDtail.do?id=${Book.id}"><img src="${pageContext.request.contextPath}/output/${Book.picUrl}"></a>
+							  <p><a href="${pageContext.request.contextPath}/deskBook/bookDtail.do?id=${Book.id}">${Book.bookName}</a></p>
+							  <p>${Book.author}</p>
+							</div>
+					     </li>
+					     </c:forEach>
+					   </ul>
+					    
 					</div>
 				</div>
 			</div>
@@ -237,7 +172,7 @@
 						<div class="carousel-inner">
 							<div class="item active">
 								<div style="overflow: hidden;">
-									<div class="col-md-3"><img src="img/book/book11.jpg"/></div>
+									<div class="col-md-3"><img src="${pageContext.request.contextPath}/static/desk/img/book/book11.jpg"/></div>
 									<div class="col-md-9" style="height:153px;padding-left: 30px;padding-right: 80px;">
 										<p style="font-size:13px;text-align: left;color: #a9a9a9;line-height: 26px;">记得，要做最后出牌的人，出让别人觉得出其不意的牌，在他们以为你要输掉的时候，这样，你才能赢得牌局。</p>
 										<br />
@@ -247,7 +182,7 @@
 							</div>
 							<div class="item">
 								<div style="overflow: hidden;">
-									<div class="col-md-3"><img src="img/book/book7.jpg"/></div>
+									<div class="col-md-3"><img src="${pageContext.request.contextPath}/static/desk/img/book/book7.jpg"/></div>
 									<div class="col-md-9" style="height:153px;padding-left: 30px;padding-right: 80px;">
 										<p style="font-size:13px;text-align: left;color: #a9a9a9;line-height: 26px;">有时候读书是一种巧妙地避开思考的方法。</p>
 										<br />
@@ -257,7 +192,7 @@
 							</div>
 							<div class="item">
 								<div style="overflow: hidden;">
-									<div class="col-md-3"><img src="img/book/book9.jpg"/></div>
+									<div class="col-md-3"><img src="${pageContext.request.contextPath}/static/desk/img/book/book9.jpg"/></div>
 									<div class="col-md-9" style="height:153px;padding-left: 30px;padding-right: 80px;">
 										<p style="font-size:13px;text-align: left;color: #a9a9a9;line-height: 26px;">越是无能的人，越喜欢挑剔别人的错儿。</p>
 										<p style="font-size:16px;text-align: right;color:#424242">——爱尔兰</p>
@@ -283,113 +218,18 @@
 						<hr style="width: 100%;border: none;height: 1px;background-color: #E2E2E2;"/>	
 					</div>						
 			  </div>
-			<div class="col-lg-12">
-						    <table id="table2">
-                           <tr>
-								<td>
-									<div>
-									<a href="#"><img src="img/book/book1.jpg"></a>
-									  <p><a href="#">刺杀骑士团长</a></p>
-									  <p>春上春树</p>
-									</div>
-								</td>
-								<td>
-									<div>
-									<a href="#"><img src="img/book/book2.jpg"></a>
-									  <p><a href="#">刺杀骑士团长</a></p>
-									  <p>春上春树</p>
-									</div>
-								</td>
-								<td>
-									<div>
-									<a href="#"><img src="img/book/book3.jpg"></a>
-									  <p><a href="#">刺杀骑士团长</a></p>
-									  <p>春上春树</p>
-									</div>
-								</td>
-								<td>
-									<div>
-									<a href="#"><img src="img/book/book4.jpg"></a>
-									  <p><a href="#">刺杀骑士团长</a></p>
-									  <p>春上春树</p>
-									</div>
-								</td>
-								<td>
-									<div>
-									<a href="#"><img src="img/book/book5.jpg"></a>
-									  <p><a href="#">刺杀骑士团长</a></p>
-									  <p>春上春树</p>
-									</div>
-								</td>
-								<td>
-									<div>
-									<a href="#"><img src="img/book/book10.jpg"></a>
-									  <p><a href="#">刺杀骑士团长</a></p>
-									  <p>春上春树</p>
-									</div>
-								</td>
-									<td>
-									<div>
-									<a href="#"><img src="img/book/book10.jpg"></a>
-									  <p><a href="#">刺杀骑士团长</a></p>
-									  <p>春上春树</p>
-									</div>
-								</td>
-
-                           </tr>
-                           <tr>
-								<td>
-									<div>
-									<a href="#"><img src="img/book/book6.jpg"></a>
-									  <p><a href="#">刺杀骑士团长</a></p>
-									  <p>春上春树</p>
-									</div>
-								</td>
-								<td>
-									<div>
-									<a href="#"><img src="img/book/book7.jpg"></a>
-									  <p><a href="#">刺杀骑士团长</a></p>
-									  <p>春上春树</p>
-									</div>
-								</td>
-								<td>
-									<div>
-									<a href="#"><img src="img/book/book8.jpg"></a>
-									  <p><a href="#">刺杀骑士团长</a></p>
-									  <p>春上春树</p>
-									</div>
-								</td>
-								<td>
-									<div>
-									<a href="#"><img src="img/book/book9.jpg"></a>
-									  <p><a href="#">刺杀骑士团长</a></p>
-									  <p>春上春树</p>
-									</div>
-								</td>
-								<td>
-									<div>
-									<a href="#"><img src="img/book/book10.jpg"></a>
-									  <p><a href="#">刺杀骑士团长</a></p>
-									  <p>春上春树</p>
-									</div>
-								</td>
-								<td>
-									<div>
-									<a href="#"><img src="img/book/book10.jpg"></a>
-									  <p><a href="#">刺杀骑士团长</a></p>
-									  <p>春上春树</p>
-									</div>
-								</td>
-									<td>
-									<div>
-									<a href="#"><img src="img/book/book10.jpg"></a>
-									  <p><a href="#">刺杀骑士团长</a></p>
-									  <p>春上春树</p>
-									</div>
-								</td>
-
-                           </tr>
-					    </table>
+			<div class="col-lg-12" id="myboooks">
+			          <ul>
+					     <c:forEach items="${mybooks}" var="Book">
+					    <li>
+			     			<div>
+							<a href="${pageContext.request.contextPath}/deskBook/bookDtail.do?id=${Book.id}"><img src="${pageContext.request.contextPath}/output/${Book.picUrl}"></a>
+							  <p><a href="${pageContext.request.contextPath}/deskBook/bookDtail.do?id=${Book.id}">${Book.bookName}</a></p>
+							  <p>${Book.author}</p>
+							</div>
+					     </li>
+					     </c:forEach> 
+					  
 			</div>				
 
 			</div> 
@@ -400,57 +240,26 @@
 						<hr style="width: 100%;border: none;height: 1px;background-color: #E2E2E2;"/>	
 					</div>						
 				</div>
+				<c:forEach items="${hotComments}" var="comment">
 				<div class="shuping">
 				   <div class="col-lg-12 col-md-12">
+				   
 				      <div class="col-lg-2">
-						 <img src="img/book/book3.jpg">
+						 <img src="${pageContext.request.contextPath}/output/${comment.picUrl}" style="display:block;width:102px;">
 				      </div>
 				      <div class="col-lg-10 ">
-				        <p class="p1">读完你再也不用认命了</p>
-				        <p class="p2">黑色火 评论 《当机立断》</p>
+				        <p class="p1">${comment.bookName}</p>
+				        <p class="p2">评论者：${comment.name} </p>
+				        <p class="p2">赞了&nbsp;${comment.praise}&nbsp;次</p>
 						<p class="p3">
-							最近我身边发生了三件事，当事人都惆怅烦闷彻夜无眠。第一件事是表妹相亲碰到了个帅哥，可是家庭条件并不理想；第二件事是哥嫂意外怀孕，对二胎不能取舍；第三件事是哥们工作乏味但薪水还行，该不该跳槽？
-
-							为了给大家一点建议，我开始求助书籍，直到碰到了《当机立断》这本书，满天的云彩终于散了。《当机立断》介绍了以事实为依据、以逻辑为准绳的思考工具，为我们在选择时提供了一个犀利的武器</p>
+							${comment.content}</p>
 				      </div>
 				   </div>
 
 				</div>
 				 <hr style="width: 100%;border: none;height: 1px;background-color: #E2E2E2;"/>	
-				 <div class="shuping">
-				   <div class="col-lg-12 col-md-12">
-				      <div class="col-lg-2">
-						 <img src="img/book/book5.jpg">
-				      </div>
-				      <div class="col-lg-10 ">
-				        <p class="p1">读完你再也不用认命了</p>
-				        <p class="p2">黑色火 评论 《当机立断》</p>
-						<p class="p3">
-							最近我身边发生了三件事，当事人都惆怅烦闷彻夜无眠。第一件事是表妹相亲碰到了个帅哥，可是家庭条件并不理想；第二件事是哥嫂意外怀孕，对二胎不能取舍；第三件事是哥们工作乏味但薪水还行，该不该跳槽？
-
-							为了给大家一点建议，我开始求助书籍，直到碰到了《当机立断》这本书，满天的云彩终于散了。《当机立断》介绍了以事实为依据、以逻辑为准绳的思考工具，为我们在选择时提供了一个犀利的武器</p>
-				      </div>
-				   </div>
-
-				</div>
-				 <hr style="width: 100%;border: none;height: 1px;background-color: #E2E2E2;"/>	
-				 <div class="shuping">
-				   <div class="col-lg-12 col-md-12">
-				      <div class="col-lg-2">
-						 <img src="img/book/book6.jpg">
-				      </div>
-				      <div class="col-lg-10 ">
-				        <p class="p1">读完你再也不用认命了</p>
-				        <p class="p2">黑色火 评论 《当机立断》</p>
-						<p class="p3">
-							最近我身边发生了三件事，当事人都惆怅烦闷彻夜无眠。第一件事是表妹相亲碰到了个帅哥，可是家庭条件并不理想；第二件事是哥嫂意外怀孕，对二胎不能取舍；第三件事是哥们工作乏味但薪水还行，该不该跳槽？
-
-							为了给大家一点建议，我开始求助书籍，直到碰到了《当机立断》这本书，满天的云彩终于散了。《当机立断》介绍了以事实为依据、以逻辑为准绳的思考工具，为我们在选择时提供了一个犀利的武器</p>
-				      </div>
-				   </div>
-
-				</div>
-				 <hr style="width: 100%;border: none;height: 1px;background-color: #E2E2E2;"/>	
+				 </c:forEach>
+				 
             </div>
 		</div>
 
@@ -474,4 +283,7 @@
 		</div>
 	</div>
 	</body>	
+	<script>
+	var path='${pageContext.request.contextPath}';
+	</script>
 </html>

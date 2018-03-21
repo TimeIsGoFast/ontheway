@@ -29,9 +29,9 @@
 					</div>
 					<div class="collapse navbar-collapse" id="daohangtiao">
 						<ul class="nav navbar-nav">
-							<li><a href="index.html">首页</a></li>
-							<li><a href="book.html">爱读书</a></li>
-							<li><a href="travel.html">去旅行</a></li>
+							<li><a href="${pageContext.request.contextPath}/index.do">首页</a></li>
+							<li><a href="${pageContext.request.contextPath}/deskBook/render.do">爱读书</a></li>
+							<li><a href="${pageContext.request.contextPath}/deskTravel/render.do">去旅行</a></li>
 							<li><a href="travel.html">小贴士</a></li>
 							<li class="wd1"><a href="">热门</a>
 								<ul class="wd2 clearfix">
@@ -85,18 +85,7 @@
 					</video>
 				</div>
 				<div class="cover">
-					<div class="container  cc2">
-						<div class="cover2" >
-							<div class="co2-1">						
-								<p>自己做网站</p>
-								<p>简单又省钱</p>
-							</div>
-							<div class="co2-2">
-								<span>引领「响应式自助建站」潮流，每一套模板都是艺术品</span>
-							</div>
-							<a class="co2-3" href="" >免 费 创 建 账 户</a>
-						</div>
-					</div>
+					
 					<div class="container cc1">
 						<div class="cover1 col-lg-6 col-md-6 pull-right" >
 							<div class="co1 hide" id="con">
@@ -109,7 +98,7 @@
 								<p>真阅读和旅行平台</p>
  								<p>从来旅行和读书都是我们认识世界的方式</p>
 							</div>
-							<a class="co3" href="" >免 费 创 建 账 户</a>
+							<a class="co3" href="${pageContext.request.contextPath}/register.do" >免 费 创 建 账 户</a>
 						</div>
 					</div>
 					<div class="container cc1">

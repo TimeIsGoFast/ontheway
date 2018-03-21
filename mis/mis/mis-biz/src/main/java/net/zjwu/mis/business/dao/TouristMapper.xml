@@ -14,7 +14,7 @@
     <result column="price" property="price" jdbcType="INTEGER" />
     <result column="airport" property="airport" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
-    <result column="create" property="create" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="pic_url" property="picUrl" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >

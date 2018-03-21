@@ -67,8 +67,8 @@
 								
 						</ul>
 						<ul class="zcdl nav navbar-nav pull-right">
-							<li><a href="login.html">登录</a></li>
-							<li><a href="register.html">注册</a></li>
+							<li id="helloname"><a href="#">${current_user.name}</a></li>
+							<li id="tuichu"><a href="${pageContext.request.contextPath}/logout.do">退出</a></li>
 						</ul>
 					</div>					
 				</div>

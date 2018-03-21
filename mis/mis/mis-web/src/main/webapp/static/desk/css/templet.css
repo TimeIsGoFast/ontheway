@@ -254,7 +254,7 @@ li{
 	border: 1px solid #ccc;
 	height: 500px;
 }
-.main2 ul li{
+#book_biaoqian li{
 	font-size: 16px;
 	float: left;
 	margin-left:20px;
@@ -379,4 +379,27 @@ li{
 	font-family: 微软雅黑;
 	line-height: 45px;
 	padding: 20px;
+}
+
+#manybook ul li{
+    font-size: 14px;
+    float: left;
+    margin: 25px 27px;
+    line-height: 26px;
+}
+#manybook ul li img{
+	display:block;
+	width:102px;
+	height:144px;
+}
+#myboooks ul li{
+	font-size: 16px;
+    float: left;
+    margin: 25px 35px;
+    line-height: 26px;
+}
+#myboooks ul li img{
+	display:block;
+	width:120px;
+	height:164px;
 }

@@ -50,8 +50,8 @@ public class Tourist implements Serializable {
      * 备注
      */
     private String remark;
-
-    private Date create;
+    @Column(name = "create_time")
+    private Date createTime;
 
     /**
      * 图片路径
@@ -222,17 +222,7 @@ public class Tourist implements Serializable {
     /**
      * @return create
      */
-    public Date getCreate() {
-        return create;
-    }
-
-    /**
-     * @param create
-     */
-    public void setCreate(Date create) {
-        this.create = create;
-    }
-
+   
     /**
      * 获取图片路径
      *
@@ -242,7 +232,15 @@ public class Tourist implements Serializable {
         return picUrl;
     }
 
-    /**
+    public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	/**
      * 设置图片路径
      *
      * @param picUrl 图片路径
