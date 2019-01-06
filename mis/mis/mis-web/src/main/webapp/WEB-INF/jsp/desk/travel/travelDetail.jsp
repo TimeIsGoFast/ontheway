@@ -17,66 +17,7 @@
 	</head>
 	<body>
 	<div id="main">
-		<header id="header" data-spy="affix" data-offset-top="70">
-			<nav class="navbar-inverse" id="daohang">
-				<div class="daohang">
-					<div class="navbar-header clearfix">
-						<button type="button" class="zd" id="zd" >
-							<span class="glyphicon glyphicon-align-justify"></span>
-						</button>
-						<a href="#" class="navbar-brand"><img src="${pageContext.request.contextPath}/static/desk/img/logo.png"/></a>
-					</div>
-					<div class="collapse navbar-collapse" id="daohangtiao">
-						<ul class="nav navbar-nav">
-							<li><a href="${pageContext.request.contextPath}/index.do">首页</a></li>
-							<li><a href="${pageContext.request.contextPath}/deskBook/render.do">爱读书</a></li>
-							<li><a href="travel.html">去旅行</a></li>
-							<li><a href="travel.html">小贴士</a></li>
-							
-							<li class="wd1"><a href="">热门</a>
-								<ul class="wd2 clearfix">
-									<li class="pull-left " style="width: 233px;">
-										<p><a href="#" class="a1">热门图书</a></p>
-										<ul class="ul1"> 
-											<li><a href="#" title="第一夜">第一夜</a></li>
-											<li><a href="#" title="追风筝的人">追风筝的人</a></li>
-											<li><a href="#" title="偷影子的人">偷影子的人</a></li>
-											<li><a href="#" title="百夜行">白夜行</a></li>
-										</ul>		
-									</li>
-									<li class="pull-left clearfix" style="width: 219px;">
-										<p><a href="#" class="a1">热门旅行</a></p>
-										<ul class="ul1"> 
-											<li><a href="#" title="埃及金字塔">埃及金字塔</a></li>
-											<li><a href="#" title="英国巨石阵">英国巨石阵</a></li>
-											<li><a href="#" title="上海迪士尼">上海迪士尼</a></li>
-											<li><a href="#" title="宁波方特">宁波方特</a></li>
-										</ul>										
-									</li>
-									<li class="pull-left clearfix" style="width: 479px;">
-										<p><a href="#" class="a1">小贴士</a></p>
-										<ul class="ul1">
-											<li><a href="#" title="夏季旅行该准备什么">夏季旅行该准备什么</a></li>
-											<li><a href="#" title="去海滩如何防止晒伤">去海滩如何防止晒伤</a></li>
-											<li><a href="#" title=""></a></li>
-											<li><a href="#" title=""></a></li>
-										</ul>										
-									</li>
-								</ul>
-							</li>
-							
-								
-						</ul>
-						<ul class="zcdl nav navbar-nav pull-right">
-							<li id="helloname"><a href="#">${current_user.name}</a></li>
-							<li id="tuichu"><a href="${pageContext.request.contextPath}/logout.do">退出</a></li>
-						</ul>
-					</div>					
-				</div>
-			
-			</nav>
-		</header>
-		
+		<%@ include file="/WEB-INF/jsp/common/menu.jsp" %>
 		<div class="main">
 	
           <div class="main2 container border" style="margin:30px auto;">
