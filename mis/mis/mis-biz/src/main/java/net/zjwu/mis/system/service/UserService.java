@@ -25,4 +25,6 @@ public interface UserService extends BaseService<User>{
 	User getUserByUid(String uid);
 
 	void initUserRole(Integer id, int i);
+
+	int updateByself(User user);
 }

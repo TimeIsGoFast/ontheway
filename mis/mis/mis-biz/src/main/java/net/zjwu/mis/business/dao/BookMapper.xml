@@ -16,13 +16,9 @@
     <result column="remark" property="remark" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="pic_url" property="picUrl" jdbcType="VARCHAR" />
+     <result column="descr" property="descr" jdbcType="LONGVARCHAR" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="net.zjwu.mis.business.model.Book" extends="BaseResultMap" >
-    <!--
-      WARNING - @mbggenerated
-    -->
-    <result column="descr" property="descr" jdbcType="LONGVARCHAR" />
-  </resultMap>
+  
   <sql id="Base_Column_List" >
     <!--
       WARNING - @mbggenerated
@@ -36,4 +32,24 @@
     -->
     descr
   </sql>
+  <select id="searchBook" resultMap="BaseResultMap">
+  select * from t_t_book where book_name like CONCAT('%','${value}','%') or author like CONCAT('%','${value}','%')
+  </select>
+  
+  <select id="searchBookBytype" resultMap="BaseResultMap">
+   select * from t_t_book where book_type=#{key}
+  </select>
+  <select id="getHotBooks" resultMap="BaseResultMap">
+  select * from t_t_book ORDER BY id DESC limit 10
+  </select>
+  
+  <insert id="addUserBook">
+  insert into user_book(user_id,book_id) values(#{id},#{bookId})
+  </insert>
+  <select id="getMybookId" resultType="java.lang.Integer">
+  select id from user_book where user_id=#{userId} and book_id=#{bookId}
+  </select>
+  <select id="getMybooks" resultMap="BaseResultMap">
+  select * from t_t_book where id in (select DISTINCT book_id from user_book where user_id=#{id})
+  </select>
 </mapper>

@@ -49,6 +49,7 @@
 			    /user/register**=anon
 				/static/** =anon
 				/renderLogin**=anon
+				/register**=anon
 				/login** = anon
 				/logout** = anon
 				/403** = anon

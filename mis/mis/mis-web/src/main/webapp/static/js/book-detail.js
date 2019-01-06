@@ -5,7 +5,7 @@ $(document).ready(function() {
 	 $("#gradeSelect").val(selectValue);
 	 }
 	 
-	$("#bookAddOrUpdate").click(function(){
+/*	$("#bookAddOrUpdate").click(function(){
 		
 		//验证
 		$.ajax({
@@ -17,5 +17,5 @@ $(document).ready(function() {
 		        console.log(data);
 		    }
 		});
-	}); 
+	}); */
 });

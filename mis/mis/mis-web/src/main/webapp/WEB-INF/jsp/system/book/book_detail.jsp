@@ -25,7 +25,7 @@
                        </div>
                    </div>
                    <div class="panel-body">
-                       <form  id="bookInfoForm" action="">
+                       <form  action="${pageContext.request.contextPath}/book/bookAddOrUpdate.do" method="post" enctype="multipart/form-data">
                        <div class="form-inline">
                               <input type="hidden" name="id" id="bookId" value="${Book.id }">
                               <div class="form-group">
@@ -48,13 +48,51 @@
                         </div>
                         <br>
                         <div class="form-inline">
-                              <div class="form-group">
+                              <%-- <div class="form-group">
                                   <label for="exampleInputName2">类型&nbsp;&nbsp;</label>
                                   <input type="text" class="form-control" id="exampleInputName2" placeholder="" name="bookType" value="${Book.bookType}">
-                              </div>
+                                  
+                              </div> --%>
+                              <div class="form-group">
+							    <label for="name">类型&nbsp;&nbsp;</label>
+							    <select class="form-control" name="bookType" id="bookType" value="${Book.bookType}">
+							        <option value="1">小说 </option>
+								    <option value="2">随笔</option>
+								    <option value="3">编程</option>
+								    <option value="4">散文</option>
+								    <option value="5">诗歌</option>
+								    <option value="6">童话</option>
+								    <option value="7">漫画</option>
+								    <option value="8">推理</option>
+								    <option value="9">绘本</option>
+								    <option value="10">青春</option>
+								    <option value="11">科幻</option>
+								    <option value="12">言情</option>
+								    <option value="13">奇幻</option>
+								    <option value="14">武侠</option>
+								    <option value="15">历史</option>
+								    <option value="16">哲学</option>
+								    <option value="17">传记</option>
+								    <option value="18">设计</option>
+								    <option value="19">建筑</option>
+								    <option value="20">电影</option>
+								    <option value="21">管理</option>
+								    <option value="22">音乐</option>
+								    <option value="23">旅行</option>
+								    <option value="24">励志</option>
+								    <option value="25">职场</option>
+								    <option value="26">教育</option>
+								    <option value="27">美食</option>
+								    <option value="28">灵修</option>
+								    <option value="29">健康</option>
+								    <option value="30">家居</option>
+								    <option value="31">互联网</option>
+								    <option value="32">科普</option>
+							    </select>
+							  </div>
                               <div class="form-group">
                                   <label for="exampleInputEmail2">&nbsp;&nbsp;&nbsp;&nbsp;出版日期&nbsp;&nbsp;</label>
-                                  <input type="text" class="form-control" id="exampleInputEmail2" placeholder="" name="publicDate" value="${ Book.publicDate}">
+                                  <input type="date" class="form-control" id="exampleInputEmail2" placeholder="" name="publicDate" value="${ Book.publicDate}">
                               </div>
                                <div class="form-group">
                                   <label for="exampleInputEmail2">&nbsp;&nbsp;&nbsp;&nbsp;热门程度&nbsp;&nbsp;</label>
@@ -75,39 +113,36 @@
                        <div>
                            <textarea class="form-control" name="descr" rows="3">${Book.descr}</textarea>
                        </div>
-                       </form>
+                     <div class="panel-body">
+                         <div class="card-title" style="font-size:20px;padding:10px 0px;">
+                             <div class="title">封面上传  <c:if test="${not empty Book.picUrl}">
+                      	   已有图片
+                      	  </c:if></div>
+                     
+                         </div>
+                             <div class="form-group">
+                             <input type="file" name="book_pic" id="exampleInputFile">
+                             <p class="help-block">支持jpg、png等格式上传</p>
+                         </div>
+                      	
+                      	
+                        
+                     </div>
                         <br>
                        <div style="float:right;margin-right:30px;">
-                       <a href="#" class="btn btn-primary" id="bookAddOrUpdate"> <c:if test="${isAdd}">增加</c:if>  <c:if test="${!isAdd}">修改</c:if> </a>
+                       <button type="submit" class="btn btn-primary" id="bookAddOrUpdate"> <c:if test="${isAdd}">提交</c:if>  <c:if test="${!isAdd}">修改</c:if> </button>
                        </div>
+                       </form>
                    </div>
                </div>
            </div>
        </div>
-         <div class="row">
-             <div class="col-xs-12">					
-                 <div class="panel panel-default">
-                     <div class="panel-heading">
-                         <div class="card-title">
-                             <div class="title">封面上传</div>
-                         </div>
-                     </div>
-                     <div class="panel-body">
-                         <form >
-                             <div class="form-group">
-                             <input type="file" id="exampleInputFile">
-                             <p class="help-block">支持jpg、png等格式上传</p>
-                     </div>
-                         </form>
-                     </div>
-                 </div>
-             </div>
-        </div>
+   
 
     <script src="${pageContext.request.contextPath}/static/assets/js/jquery.metisMenu.js"></script>
 	<script src="${pageContext.request.contextPath}/static/assets/js/select2.full.min.js"></script>
 	<script type="text/javascript">
-
+	$("#bookType").val(${Book.bookType});
 	</script>
       <!-- Custom Js -->
     <script src="${pageContext.request.contextPath}/static/js/book-detail.js"></script> 
