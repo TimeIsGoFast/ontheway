@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt">
 <!DOCTYPE html>
 <html>
 	<head>
@@ -79,89 +78,82 @@
 		</header>
 		
 		<div class="main">
-		  	  	<div class="main1">
-				<div class="container">
-					<div class="b1">
-						 <div class="col-lg-12" >
-						    <div class="input-group col-lg-6" style="margin:auto;">
-						      <input type="text" class="form-control" id="searchBook" placeholder="输入书名、作者">
-						      <span class="input-group-btn">
-						        <button class="btn btn-info" type="button" id="btn_search"><a class="glyphicon glyphicon-search"></a></button>
-						      </span>
-					
-						    </div>
-						  
-						  </div>
-						  <br>
-						<hr />
-					</div>
-				</div>
-			</div>
-          <div class="main2 container border">
-             <div class="col-lg-12 ">
-					<div class="col-lg-3 ">
-					 <img src="${pageContext.request.contextPath}/output/${book.picUrl}" style="display: block;width: 200px;margin:30px auto;">
-					</div>
-					<div class="col-lg-9  " style="line-height:24px;">
-					    <p class="book_detail_book_name">${book.bookName}&nbsp;&nbsp;&nbsp;<c:if test="${mybook eq false}"><a href="${pageContext.request.contextPath}/deskBook/addMybook.do?bookId=${book.id}" type="button" class="btn btn-success">添加到我的书架</a></c:if></p>
-					    <p>作　者：	${book.author}</p>
-					    <p>出版社：	${book.publics}</p>
-						<p>出版日：	${book.publicDate}</p>
-						<p>简  介：	${book.descr}</p>
-						
-						
-					</div>
-				</div>
-			</div>
-			  <div class="main2 container" >
-	            <div class="container" style="overflow: hidden;margin: 30px auto;">
-						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="c11-1">
-							<h1 class="hh1" style="font-size: 20px;">添加书评</h1>	
+  			<div class="main2 container" style="margin:30px auto;">
+             <form  action="${pageContext.request.contextPath}/perfectInfo/addInfo.do" method="post" enctype="multipart/form-data">
+                       <div >
+	                         <div class="input">
+	       						 <p style="line-height:40px;font-size:20px;">完善信息&nbsp;&nbsp;<b id="message" style="font-size:1em;">${message}</b></p>
+	   						 </div>
+                              <input type="hidden" name="uid" id="bookId" value="${user.uid}">
+                              <div class="form-group">
+                                  <label for="exampleInputName2">姓名&nbsp;&nbsp;</label>
+                                  <input type="text" name="name" class="form-control" placeholder="" id="name" value="${user.name}">
+                              </div>
+                              <div class="form-group">
+                                  <label for="exampleInputEmail2">手机号&nbsp;&nbsp;</label>
+                                  <input type="text" name="tel" class="form-control" placeholder="" id="tel" value="${user.tel}">
+                              </div>
+                              <div class="form-group">
+                                  <label for="exampleInputEmail2">邮箱&nbsp;&nbsp;</label>
+                                  <input type="text" name="mail" class="form-control" placeholder="" id="mail" value="${user.mail}">
+                              </div>
+                               <div class="form-group">
+                                  <label for="exampleInputEmail2">性别&nbsp;&nbsp;</label>
+                                  <c:choose>
+									    <c:when test="${user.sex eq '1'}">
+									      <label class="radio-inline">
+		       								 <input type="radio" name="sex" id="sex1" checked value="1"> 男
+		    								</label>
+		    								 <label class="radio-inline">
+		       								 <input type="radio" name="sex" id="sex2"  value="0"> 女
+		    								</label>
+									    </c:when>
+									    <c:when test="${user.sex eq '0'}">
+									         <label class="radio-inline">
+		       								 <input type="radio" name="sex" id="sex1" value="1"> 男
+		    								</label>
+		    								 <label class="radio-inline">
+		       								 <input type="radio" name="sex" id="sex2" checked  value="0"> 女
+		    								</label>
+									    </c:when>
+									  
+									    <c:otherwise>
+									       <label class="radio-inline">
+		       								 <input type="radio" name="sex" id="sex1"  value="1"> 男
+		    								</label>
+		    								 <label class="radio-inline">
+		       								 <input type="radio" name="sex" id="sex2"  value="0"> 女
+		    								</label>
+									    </c:otherwise>
+									</c:choose>
+                                   
+                              </div>
+                                <div class="control-group js_uploadBox">
+							    <div class="input">
+							        <span style="font-size: 1.3em">头像上传</span>
+							        <div style="margin:20px 0px;">
+							            <input type="file" class="js_upFile" name="imgfile" placeholder="" id="imgfile">
 							
-						</div>						
-				</div>
-				<div style="border:1px solid #ccc;padding: 30px;border-radius: 5px;height: 250px">
-				<div class="form-group" >
-    				 <input type="hidden" value="${book.id }" id="bookId"/>
-   					 <textarea class="form-control" rows="5" placeholder="请输入您的评论" id="bookComment"></textarea>
-                 
-			         <button type="button" class="btn btn-danger" id="bookCommnetBtn" style="margin: 30px; float: right;">提交</button>
-			    
- 				 </div>
- 				 </div>
-
-            </div>
-       
-				<div class="c11">
-           		<div class="container" style="overflow: hidden;margin: 30px auto;">
-					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="c11-1">
-						<h1 class="hh1" style="font-size: 20px;">评论</h1>	
-						<hr style="width: 100%;border: none;height: 1px;background-color: #E2E2E2;"/>	
-					</div>						
-				</div>
-				<c:forEach items="${comments}" var="comment">
-				<div class="shuping">
-				   <div class="col-lg-12 col-md-12">
-				      <div class="col-lg-2">
-						 <img src="${pageContext.request.contextPath}/output/${comment.remark}" style="display:block;width:102px;margin:auto;">
-				      </div>
-				      <div class="col-lg-10 " style="font-size:18px;">
-				        <p class="p1" style="font-size:25px;line-height:50px;">${comment.name}</p>
-				        <p class="p2">${comment.commentDate}</p>
-						<p class="p3" style="font-szie:20px;line-height:40px;">${comment.content}</p>
-						<p style="color:green;text-align:right;"><button type="button" class="btn btn-success zanyixia" data-id="${comment.id}" data-cid="${comment.praise}"><i class="glyphicon glyphicon-thumbs-up"></i>&nbsp;&nbsp;<span>${comment.praise}</span></button></p>
-				      </div>
-				   </div>
-
-				</div>
-				 <hr style="width: 100%;border: none;height: 1px;background-color: #E2E2E2;"/>	
-				 </c:forEach>
-				
-            </div>
-
-          
-
-     </div>
+							        </div>
+							    </div>
+							
+							    <div class="input">
+							        <span>预&nbsp;&nbsp;&nbsp;&nbsp;览</span>
+							        <div style="margin:30px;width:150px;height:150px;">
+							
+							            <div class="js_showBox "><img id="_img" class="js_logoBox" src="${pageContext.request.contextPath }/output/${user.picUrl}" width="100px" ></div>
+							        </div>
+							    </div>
+							       </div>  
+                              <div style="float:right;margin-right:30px;">
+		                       <button type="submit" class="btn btn-primary" id="travelAddOrUpdate"> 确认提交</button>
+		                       </div>
+                        </div>
+     
+                      
+                       </form>
+		   </div>
+       </div>
 		<div class="footer">
 			<div class="f1">
 				<div class="container">

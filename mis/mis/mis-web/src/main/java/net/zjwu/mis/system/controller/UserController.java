@@ -97,6 +97,7 @@ public class UserController extends BaseController<User> {
 			user.setCreateDate(date);
 			user.setUpdateBy(user.getUid());
 			user.setUpdateDate(date);
+			user.setPicUrl("user/img.JPG");
 			user.setRemark("desk");
 		    userService.save(user);
 			User user3 = userService.getUserByUid(user.getUid());
@@ -114,4 +115,7 @@ public class UserController extends BaseController<User> {
 		}
 		return rs;
 	}
+	
+	//userInfoRender
+	
 }

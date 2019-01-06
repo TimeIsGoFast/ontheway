@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -28,35 +29,36 @@
 					</div>
 					<div class="collapse navbar-collapse" id="daohangtiao">
 						<ul class="nav navbar-nav">
-							<li><a href="index.html">首页</a></li>
-							<li><a href="book.html">爱读书</a></li>
-							<li><a href="travel.html">去旅行</a></li>
-							<li><a href="travel.html">小贴士</a></li>
+							<li><a href="${pageContext.request.contextPath}/index.do">首页</a></li>
+							<li><a href="${pageContext.request.contextPath}/deskBook/render.do">爱读书</a></li>
+							<li><a href="${pageContext.request.contextPath}/deskTravel/render.do">去旅行</a></li>
+							<li><a href="${pageContext.request.contextPath}/deskTravel/tieshi1.do">小贴士</a></li>
+							<li><a href="${pageContext.request.contextPath}/deskTravel/guideRender.do">游记</a></li>
 							<li class="wd1"><a href="">热门</a>
 								<ul class="wd2 clearfix">
-									<li class="pull-left " style="width: 233px;">
+										<li class="pull-left " style="width: 233px;">
 										<p><a href="#" class="a1">热门图书</a></p>
 										<ul class="ul1"> 
-											<li><a href="#" title="第一夜">第一夜</a></li>
-											<li><a href="#" title="追风筝的人">追风筝的人</a></li>
-											<li><a href="#" title="偷影子的人">偷影子的人</a></li>
-											<li><a href="#" title="百夜行">白夜行</a></li>
+											<li><a href="${pageContext.request.contextPath}/deskBook/bookDtail.do?id=7" title="嫌疑人X的献身">嫌疑人X的献身</a></li>
+											<li><a href="${pageContext.request.contextPath}/deskBook/bookDtail.do?id=8" title="房思琪的初恋乐园">房思琪的初恋乐园</a></li>
+											<li><a href="${pageContext.request.contextPath}/deskBook/bookDtail.do?id=3" title="百夜行">百夜行</a></li>
+											<li><a href="${pageContext.request.contextPath}/deskBook/bookDtail.do?id=19" title="第一夜">第一夜</a></li>
 										</ul>		
 									</li>
 									<li class="pull-left clearfix" style="width: 219px;">
 										<p><a href="#" class="a1">热门旅行</a></p>
 										<ul class="ul1"> 
-											<li><a href="#" title="埃及金字塔">埃及金字塔</a></li>
-											<li><a href="#" title="英国巨石阵">英国巨石阵</a></li>
-											<li><a href="#" title="上海迪士尼">上海迪士尼</a></li>
-											<li><a href="#" title="宁波方特">宁波方特</a></li>
+											<li><a href="${pageContext.request.contextPath}/deskTravel/travelDetail.do?id=7" title="埃及金字塔">埃及金字塔</a></li>
+											<li><a href="${pageContext.request.contextPath}/deskTravel/travelDetail.do?id=6" title="英国巨石阵">英国巨石阵</a></li>
+											<li><a href="${pageContext.request.contextPath}/deskTravel/travelDetail.do?id=1" title="上海迪士尼">大理</a></li>
+											<li><a href="${pageContext.request.contextPath}/deskTravel/travelDetail.do?id=5" title="宁波方特">丽江</a></li>
 										</ul>										
 									</li>
 									<li class="pull-left clearfix" style="width: 479px;">
 										<p><a href="#" class="a1">小贴士</a></p>
 										<ul class="ul1">
-											<li><a href="#" title="夏季旅行该准备什么">夏季旅行该准备什么</a></li>
-											<li><a href="#" title="去海滩如何防止晒伤">去海滩如何防止晒伤</a></li>
+											<li><a href="${pageContext.request.contextPath}/deskTravel/tieshi1.do" title="去西藏旅行该准备什么">去西藏旅行该准备什么</a></li>
+											<li><a href="${pageContext.request.contextPath}/deskTravel/tieshi2.do" title="去海边被晒伤了怎么办? ">去海边被晒伤了怎么办? </a></li>
 											<li><a href="#" title=""></a></li>
 											<li><a href="#" title=""></a></li>
 										</ul>										
@@ -67,7 +69,7 @@
 								
 						</ul>
 						<ul class="zcdl nav navbar-nav pull-right">
-							<li id="helloname"><a href="#">${current_user.name}</a></li>
+							<li id="helloname"><a href="${pageContext.request.contextPath}/perfectInfo/render.do" >${current_user.name}</a></li>
 							<li id="tuichu"><a href="${pageContext.request.contextPath}/logout.do">退出</a></li>
 						</ul>
 					</div>					
@@ -77,15 +79,6 @@
 		</header>
 		<div class="main">
 			<div class="e1">
-				<div class="e1-1">
-					<div class="e1-1-1 ">
-						<div class="e1-1-1a container">
-							<img src="${pageContext.request.contextPath}/static/desk/img/p4-2.png" class="img-responsive" width="234" height="56"/><br />
-							<span>起飞页是当今最领先的响应式自助建站平台，流线式网页布局设计方案，可视化图文内容编辑模式，它让网站制作和维护成为一件轻松惬意的事。无论是普通互联网用户还是专业网站制作人员，都能使用起飞页设计出最具专业水准的网站。</span>	
-							<br><a>现在注册</a>
-						</div>
-					</div>
-			    </div>
 			    <div class="e1-2">
 			    	<div class="e1-2-1">
 						<div class="e1-2-1a container">
@@ -106,147 +99,100 @@
 				</div>
 				<div class="col-lg-12">
 				  <div class="row">
-					  <div class="col-sm-6 col-md-4">
+				  <c:forEach items="${travels}" var="travel">
+				  
+					  <div class="col-sm-6 col-md-3">
+					  <a href="${pageContext.request.contextPath}/deskTravel/travelDetail.do?id=${travel.id}">
 					    <div class="thumbnail">
-					      <img src="${pageContext.request.contextPath}/static/desk/img/travel/t1.png" alt="碎片大厦">
+					      <img src="${pageContext.request.contextPath}/output/${travel.picUrl}" style="display:block;height:230px;" alt="碎片大厦">
 					      <div class="caption">
-					        <h3>Thumbnail label</h3>
+					       <h3>${travel.touristName}</h3>
 					       
 					    
 					      </div>
 					    </div>
+					     </a>
 					  </div>
-				
-					
-					  <div class="col-sm-6 col-md-4">
-					    <div class="thumbnail">
-					      <img src="${pageContext.request.contextPath}/static/desk/img/travel/t7.jpg" alt="碎片大厦">
-					      <div class="caption">
-					        <h3>Thumbnail label</h3>
-					     
-					     
-					      </div>
-					    </div>
-					  </div>
-				
-					  <div class="col-sm-6 col-md-4">
-					    <div class="thumbnail">
-					      <img src="${pageContext.request.contextPath}/static/desk/img/travel/t3.png" alt="碎片大厦">
-					      <div class="caption">
-					        <h3>Thumbnail label</h3>
-					       
-					      </div>
-					    </div>
-					  </div>
-					   <div class="col-sm-6 col-md-4">
-					    <div class="thumbnail">
-					      <img src="${pageContext.request.contextPath}/static/desk/img/travel/t4.jpg" alt="碎片大厦">
-					      <div class="caption">
-					        <h3>Thumbnail label</h3>
-					      
-					      </div>
-					    </div>
-					  </div>
-					   <div class="col-sm-6 col-md-4">
-					    <div class="thumbnail">
-					      <img src="${pageContext.request.contextPath}/static/desk/img/travel/t5.jpg" alt="碎片大厦">
-					      <div class="caption">
-					        <h3>Thumbnail label</h3>
-					    
-					      </div>
-					    </div>
-					  </div>
+					 
+				</c:forEach>
 					 
 					</div>
 			
 				</div>
-				
+				 <hr style="width: 100%;border: none;height: 1px;background-color: #E2E2E2;"/>	
 				
             </div>
 			<div style="width:50px;height:50px;"></div>
             <div class="c11">
            		<div class="container" style="overflow: hidden;margin: 30px auto;">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="c11-1">
-						<h1 class="hh1" style="font-size: 30px;">跟我去旅行</h1>	
+						<h1 class="hh1" style="font-size: 30px;">游记攻略</h1>	
 						<hr style="width: 100%;border: none;height: 1px;background-color: #E2E2E2;"/>	
 					</div>						
 				</div>
-				<div class="shuping">
-				   <div class="col-lg-12 col-md-12">
-				      <div class="col-lg-2">
-						 <img src="${pageContext.request.contextPath}/static/desk/img/book/book3.jpg">
-				      </div>
-				      <div class="col-lg-10 ">
-				        <p class="p1">读完你再也不用认命了</p>
-				        <p class="p2">黑色火 评论 《当机立断》</p>
-						<p class="p3">
-							最近我身边发生了三件事，当事人都惆怅烦闷彻夜无眠。第一件事是表妹相亲碰到了个帅哥，可是家庭条件并不理想；第二件事是哥嫂意外怀孕，对二胎不能取舍；第三件事是哥们工作乏味但薪水还行，该不该跳槽？
-
-							为了给大家一点建议，我开始求助书籍，直到碰到了《当机立断》这本书，满天的云彩终于散了。《当机立断》介绍了以事实为依据、以逻辑为准绳的思考工具，为我们在选择时提供了一个犀利的武器</p>
-				      </div>
-				   </div>
-
+                <div class="col-lg-12">
+				  <div class="row">
+				  <c:forEach items="${guides}" var="guide">
+				  
+					  <div class="col-sm-4 col-md-2">
+					  <a href="${pageContext.request.contextPath}/deskTravel/guideDetail.do?id=${guide.id}">
+					    <div class="thumbnail">
+					      <img src="${pageContext.request.contextPath}/output/${guide.picUrl}" style="display:block;height:130px;" alt="碎片大厦">
+					      <div class="caption">
+					       <p>${guide.topic}</p>
+					       
+					    
+					      </div>
+					    </div>
+					     </a>
+					  </div>
+					 
+				</c:forEach>
+					 
+					</div>
+			
 				</div>
 				 <hr style="width: 100%;border: none;height: 1px;background-color: #E2E2E2;"/>	
-				 <div class="shuping">
-				   <div class="col-lg-12 col-md-12">
-				      <div class="col-lg-2">
-						 <img src="${pageContext.request.contextPath}/static/desk/img/book/book5.jpg">
-				      </div>
-				      <div class="col-lg-10 ">
-				        <p class="p1">读完你再也不用认命了</p>
-				        <p class="p2">黑色火 评论 《当机立断》</p>
-						<p class="p3">
-							最近我身边发生了三件事，当事人都惆怅烦闷彻夜无眠。第一件事是表妹相亲碰到了个帅哥，可是家庭条件并不理想；第二件事是哥嫂意外怀孕，对二胎不能取舍；第三件事是哥们工作乏味但薪水还行，该不该跳槽？
-
-							为了给大家一点建议，我开始求助书籍，直到碰到了《当机立断》这本书，满天的云彩终于散了。《当机立断》介绍了以事实为依据、以逻辑为准绳的思考工具，为我们在选择时提供了一个犀利的武器</p>
-				      </div>
-				   </div>
-
-				</div>
-				 <hr style="width: 100%;border: none;height: 1px;background-color: #E2E2E2;"/>	
-				 <div class="shuping">
-				   <div class="col-lg-12 col-md-12">
-				      <div class="col-lg-2">
-						 <img src="${pageContext.request.contextPath}/static/desk/img/book/book6.jpg">
-				      </div>
-				      <div class="col-lg-10 ">
-				        <p class="p1">读完你再也不用认命了</p>
-				        <p class="p2">黑色火 评论 《当机立断》</p>
-						<p class="p3">
-							最近我身边发生了三件事，当事人都惆怅烦闷彻夜无眠。第一件事是表妹相亲碰到了个帅哥，可是家庭条件并不理想；第二件事是哥嫂意外怀孕，对二胎不能取舍；第三件事是哥们工作乏味但薪水还行，该不该跳槽？
-
-							为了给大家一点建议，我开始求助书籍，直到碰到了《当机立断》这本书，满天的云彩终于散了。《当机立断》介绍了以事实为依据、以逻辑为准绳的思考工具，为我们在选择时提供了一个犀利的武器</p>
-				      </div>
-				   </div>
-
-				</div>
-				 <hr style="width: 100%;border: none;height: 1px;background-color: #E2E2E2;"/>	
+				 	
             </div>
 
-
-          <div class="c11">
+		<div class="c11">
            		<div class="container" style="overflow: hidden;margin: 30px auto;">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="c11-1">
-						<h1 class="hh1" style="font-size: 30px;">温馨小贴士</h1>	
+						<h1 class="hh1" style="font-size: 30px;">结伴而行</h1>	
 						<hr style="width: 100%;border: none;height: 1px;background-color: #E2E2E2;"/>	
 					</div>						
 				</div>
-		</div>
-
-		 <div class="c11">
-           		<div class="container" style="overflow: hidden;margin: 30px auto;">
-					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="c11-1">
-						<h1 class="hh1" style="font-size: 30px;">旅行方式</h1>	
-						<hr style="width: 100%;border: none;height: 1px;background-color: #E2E2E2;"/>	
-					</div>						
+				<div class="col-lg-12">
+				  <div class="row">
+				  <c:forEach items="${travels}" var="travel">
+				  
+					  <div class="col-sm-6 col-md-3">
+					  <a href="${pageContext.request.contextPath}/deskTravel/travelDetail.do?id=${travel.id}" style="text-decoration: none;">
+					    <div class="thumbnail">
+					      <img src="${pageContext.request.contextPath}/output/${travel.picUrl}" style="display:block;height:230px;" >
+					      <div class="caption" style="text-align:left;text-decoration: none;font-size:16px;">
+					       <p>发起人：哈哈哈</p>
+					       <p>地点：北京</p>
+					       <p>时间：2017-1-30 - 2017-2-3</p>
+					       <p>联系方式：1755555555</p>
+					      </div>
+					    </div>
+					     </a>
+					  </div>
+					 
+				</c:forEach>
+					 
+					</div>
+			
 				</div>
-		</div>
-
+				 <hr style="width: 100%;border: none;height: 1px;background-color: #E2E2E2;"/>	
+				
+            </div>
 		 <div class="c11">
            		<div class="container" style="overflow: hidden;margin: 30px auto;">
 					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="c11-1">
-						<h1 class="hh1" style="font-size: 30px;">一起去旅行</h1>	
+						<h1 class="hh1" style="font-size: 30px;">问答解疑</h1>	
 						<hr style="width: 100%;border: none;height: 1px;background-color: #E2E2E2;"/>	
 					</div>						
 				</div>

@@ -11,4 +11,6 @@ public interface UserMapper extends Mapper<User> {
 	User getUserWithRolesByUid(String uid);
 	
 	List<User> getUsersByRoleId(int roleId);
+
+	void updateByself(User user);
 }

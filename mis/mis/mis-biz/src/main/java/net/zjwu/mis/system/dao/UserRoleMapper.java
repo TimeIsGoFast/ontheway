@@ -9,4 +9,6 @@ public interface UserRoleMapper extends Mapper<UserRole> {
 	
 	void deleteRoleUsersByRoleId(int roleId);
 
+	
+
 }

@@ -24,4 +24,7 @@
     id, tourist_name, city, grade, adress, tourist_type, price, airport, remark, create, 
     pic_url
   </sql>
+  <select id="selectHout" resultMap="BaseResultMap">
+   select * from t_t_tourist ORDER BY grade ASC,create_time DESC limit 8
+  </select>
 </mapper>

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt">
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,7 +12,6 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/static/desk/css/daohang.css" />
 		<script type="text/javascript" src="${pageContext.request.contextPath}/static/desk/js/jquery-2.1.1.min.js" ></script>		
 		<script type="text/javascript" src="${pageContext.request.contextPath}/static/desk/js/bootstrap.js" ></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/static/desk/js/book.js" ></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/static/desk/js/templet.js"></script>
 		<title></title>
 	</head>
@@ -34,6 +32,7 @@
 							<li><a href="${pageContext.request.contextPath}/deskBook/render.do">爱读书</a></li>
 							<li><a href="${pageContext.request.contextPath}/deskTravel/render.do">去旅行</a></li>
 							<li><a href="${pageContext.request.contextPath}/deskTravel/tieshi1.do">小贴士</a></li>
+							<li><a href="${pageContext.request.contextPath}/deskTravel/guideRender.do">游记</a></li>
 							<li class="wd1"><a href="">热门</a>
 								<ul class="wd2 clearfix">
 										<li class="pull-left " style="width: 233px;">
@@ -79,89 +78,30 @@
 		</header>
 		
 		<div class="main">
-		  	  	<div class="main1">
-				<div class="container">
-					<div class="b1">
-						 <div class="col-lg-12" >
-						    <div class="input-group col-lg-6" style="margin:auto;">
-						      <input type="text" class="form-control" id="searchBook" placeholder="输入书名、作者">
-						      <span class="input-group-btn">
-						        <button class="btn btn-info" type="button" id="btn_search"><a class="glyphicon glyphicon-search"></a></button>
-						      </span>
-					
-						    </div>
-						  
-						  </div>
-						  <br>
-						<hr />
-					</div>
-				</div>
-			</div>
-          <div class="main2 container border">
-             <div class="col-lg-12 ">
-					<div class="col-lg-3 ">
-					 <img src="${pageContext.request.contextPath}/output/${book.picUrl}" style="display: block;width: 200px;margin:30px auto;">
-					</div>
-					<div class="col-lg-9  " style="line-height:24px;">
-					    <p class="book_detail_book_name">${book.bookName}&nbsp;&nbsp;&nbsp;<c:if test="${mybook eq false}"><a href="${pageContext.request.contextPath}/deskBook/addMybook.do?bookId=${book.id}" type="button" class="btn btn-success">添加到我的书架</a></c:if></p>
-					    <p>作　者：	${book.author}</p>
-					    <p>出版社：	${book.publics}</p>
-						<p>出版日：	${book.publicDate}</p>
-						<p>简  介：	${book.descr}</p>
-						
-						
-					</div>
-				</div>
-			</div>
-			  <div class="main2 container" >
-	            <div class="container" style="overflow: hidden;margin: 30px auto;">
-						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="c11-1">
-							<h1 class="hh1" style="font-size: 20px;">添加书评</h1>	
-							
-						</div>						
-				</div>
-				<div style="border:1px solid #ccc;padding: 30px;border-radius: 5px;height: 250px">
-				<div class="form-group" >
-    				 <input type="hidden" value="${book.id }" id="bookId"/>
-   					 <textarea class="form-control" rows="5" placeholder="请输入您的评论" id="bookComment"></textarea>
-                 
-			         <button type="button" class="btn btn-danger" id="bookCommnetBtn" style="margin: 30px; float: right;">提交</button>
-			    
- 				 </div>
- 				 </div>
-
-            </div>
-       
-				<div class="c11">
-           		<div class="container" style="overflow: hidden;margin: 30px auto;">
-					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="c11-1">
-						<h1 class="hh1" style="font-size: 20px;">评论</h1>	
+			<div class="main2 container" style="margin:30px auto;">
+			    <div class="col-lg-12">
+			    <h1 class="hh1" style="font-size: 25px;">去西藏旅行该准备什么</h1>	
 						<hr style="width: 100%;border: none;height: 1px;background-color: #E2E2E2;"/>	
-					</div>						
-				</div>
-				<c:forEach items="${comments}" var="comment">
-				<div class="shuping">
-				   <div class="col-lg-12 col-md-12">
-				      <div class="col-lg-2">
-						 <img src="${pageContext.request.contextPath}/output/${comment.remark}" style="display:block;width:102px;margin:auto;">
-				      </div>
-				      <div class="col-lg-10 " style="font-size:18px;">
-				        <p class="p1" style="font-size:25px;line-height:50px;">${comment.name}</p>
-				        <p class="p2">${comment.commentDate}</p>
-						<p class="p3" style="font-szie:20px;line-height:40px;">${comment.content}</p>
-						<p style="color:green;text-align:right;"><button type="button" class="btn btn-success zanyixia" data-id="${comment.id}" data-cid="${comment.praise}"><i class="glyphicon glyphicon-thumbs-up"></i>&nbsp;&nbsp;<span>${comment.praise}</span></button></p>
-				      </div>
-				   </div>
-
-				</div>
-				 <hr style="width: 100%;border: none;height: 1px;background-color: #E2E2E2;"/>	
-				 </c:forEach>
+	  			<p style="line-height:40px;font-size:15px;">1.背包：在够用的前提下,在西藏旅行携带的行李背包越少越好。一般45升以下的背包就足以应付,如果参与一些野外徒步野营活动的,那么一大一小两个背包也就足够。
+	  			<br>2.服装：因为西藏气温很低,昼夜温差很大,所以羽绒服和保暖的绒衣必不可少。
+				　　如果去西藏徒步或登山,应该准备一套排汗内衣。在野外,有汗粘在身上是很麻烦的,而且它会迅速带走身上的热量,十分危险。另外要特别注意,西藏的七、八月,几乎天天要下雨,这就要求全身的装备都应具备防水性质。
+				　　<br>3.睡袋：七、八月份带一个1千克的鸭绒睡袋就足够温暖的了。要买80%以上绒的,压缩后体积比大瓶可乐大不了多少。
+				　　<br>4.鞋：首选登山鞋，去旅行当然需要一双好鞋,尤其是在西藏,最佳选择是硬底高帮的登山鞋,不容易进沙石,过泥泞地不易脱落,隔水和保暖也比较好。同时建议带一双拖鞋,在浴室里用。
+				　<br>5.太阳镜：不仅仅是酷，强烈的紫外线和冰雪反射都容易损伤眼睛,所以一副好的太阳镜十分必要。
+				　　<br>6.防晒霜：避免脱皮必用，高原空气稀薄,太阳直射。防晒霜可以避免被晒得脱皮。
+				　　<br>7.旅行水壶：生命之源，西藏的水很纯净,有的可以直接饮用。高原上往往几十公里无人烟,经常有上顿没下顿,所以随身带个水壶很有用。
+				　　<br>8.地图指南针：万一迷路,它能指引前进方向。
+				　　<br>9.罐装氧气：标准配置，高原反应的基本成因就是缺氧,还是带上两罐保险。
+				　　<br>10.药品：一样也别落下，外伤用的云南白药、正红花油、创可贴、红药水;喉咙用的草珊瑚含片;清热消炎的板蓝根冲剂;消炎的头咆、氧氟沙星;胃肠药氟哌酸、藿香正气水、泻痢停、黄连素以及感冒药、头痛药等。对于有高原反应抑制需要提前服用红景天，以降低气压差对人的影响。
+	  			</p>
+	  			</div>
+	  		</div>
+	  		
+  			<div class="main2 container" style="margin:30px auto;">
+  		
 				
-            </div>
-
-          
-
-     </div>
+		   </div>
+       </div>
 		<div class="footer">
 			<div class="f1">
 				<div class="container">

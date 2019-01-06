@@ -37,6 +37,10 @@
                                   <input type="text" class="form-control" id="exampleInputEmail2" placeholder="" name="city" value="">
                               </div>
                               <div class="form-group">
+                                  <label for="exampleInputEmail2">具体地点&nbsp;&nbsp;</label>
+                                  <input type="text" class="form-control" id="exampleInputEmail2" placeholder="" name="address" value="">
+                              </div>
+                              <div class="form-group">
                                   <label for="exampleInputEmail2">附近机场&nbsp;&nbsp;</label>
                                   <input type="text" class="form-control" id="exampleInputEmail2" placeholder="" name="airport" value="">
                               </div>
@@ -85,7 +89,7 @@
                      </div>
                         <br>
                        <div style="float:right;margin-right:30px;">
-                       <button type="submit" class="btn btn-primary" id="travelAddOrUpdate"> <c:if test="${isAdd}">提交</c:if>  <c:if test="${!isAdd}">修改</c:if> </button>
+                       <button type="submit" class="btn btn-primary" id="travelAddOrUpdate">提交</button>
                        </div>
                        </form>
                    </div>

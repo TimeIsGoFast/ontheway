@@ -83,6 +83,19 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 		userRole.setRoleId(i);
 		userRoleMapper.insert(userRole);
 	}
+
+	@Override
+	public int updateByself(User user) {
+		int info=1;
+		try {
+			userMapper.updateByself(user);
+			info=1;
+		} catch (Exception e) {
+			e.printStackTrace();
+			info=0;
+		}
+		return info;
+	}
 	
 	
 }

@@ -87,6 +87,10 @@ public class User implements Serializable {
      * 密码
      */
     private String password;
+    
+    
+    @Column(name = "pic_url")
+    private String picUrl;
 
     @Transient
     private List<Role> roles = new ArrayList<Role>();
@@ -335,6 +339,14 @@ public class User implements Serializable {
 	 */
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
+	}
+
+	public String getPicUrl() {
+		return picUrl;
+	}
+
+	public void setPicUrl(String picUrl) {
+		this.picUrl = picUrl;
 	}
 
 	

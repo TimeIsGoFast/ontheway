@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt">
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,7 +12,6 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/static/desk/css/daohang.css" />
 		<script type="text/javascript" src="${pageContext.request.contextPath}/static/desk/js/jquery-2.1.1.min.js" ></script>		
 		<script type="text/javascript" src="${pageContext.request.contextPath}/static/desk/js/bootstrap.js" ></script>
-		<script type="text/javascript" src="${pageContext.request.contextPath}/static/desk/js/book.js" ></script>
 		<script type="text/javascript" src="${pageContext.request.contextPath}/static/desk/js/templet.js"></script>
 		<title></title>
 	</head>
@@ -32,33 +30,34 @@
 						<ul class="nav navbar-nav">
 							<li><a href="${pageContext.request.contextPath}/index.do">首页</a></li>
 							<li><a href="${pageContext.request.contextPath}/deskBook/render.do">爱读书</a></li>
-							<li><a href="${pageContext.request.contextPath}/deskTravel/render.do">去旅行</a></li>
-							<li><a href="${pageContext.request.contextPath}/deskTravel/tieshi1.do">小贴士</a></li>
+							<li><a href="travel.html">去旅行</a></li>
+							<li><a href="travel.html">小贴士</a></li>
+							
 							<li class="wd1"><a href="">热门</a>
 								<ul class="wd2 clearfix">
-										<li class="pull-left " style="width: 233px;">
+									<li class="pull-left " style="width: 233px;">
 										<p><a href="#" class="a1">热门图书</a></p>
 										<ul class="ul1"> 
-											<li><a href="${pageContext.request.contextPath}/deskBook/bookDtail.do?id=7" title="嫌疑人X的献身">嫌疑人X的献身</a></li>
-											<li><a href="${pageContext.request.contextPath}/deskBook/bookDtail.do?id=8" title="房思琪的初恋乐园">房思琪的初恋乐园</a></li>
-											<li><a href="${pageContext.request.contextPath}/deskBook/bookDtail.do?id=3" title="百夜行">百夜行</a></li>
-											<li><a href="${pageContext.request.contextPath}/deskBook/bookDtail.do?id=19" title="第一夜">第一夜</a></li>
+											<li><a href="#" title="第一夜">第一夜</a></li>
+											<li><a href="#" title="追风筝的人">追风筝的人</a></li>
+											<li><a href="#" title="偷影子的人">偷影子的人</a></li>
+											<li><a href="#" title="百夜行">白夜行</a></li>
 										</ul>		
 									</li>
 									<li class="pull-left clearfix" style="width: 219px;">
 										<p><a href="#" class="a1">热门旅行</a></p>
 										<ul class="ul1"> 
-											<li><a href="${pageContext.request.contextPath}/deskTravel/travelDetail.do?id=7" title="埃及金字塔">埃及金字塔</a></li>
-											<li><a href="${pageContext.request.contextPath}/deskTravel/travelDetail.do?id=6" title="英国巨石阵">英国巨石阵</a></li>
-											<li><a href="${pageContext.request.contextPath}/deskTravel/travelDetail.do?id=1" title="上海迪士尼">大理</a></li>
-											<li><a href="${pageContext.request.contextPath}/deskTravel/travelDetail.do?id=5" title="宁波方特">丽江</a></li>
+											<li><a href="#" title="埃及金字塔">埃及金字塔</a></li>
+											<li><a href="#" title="英国巨石阵">英国巨石阵</a></li>
+											<li><a href="#" title="上海迪士尼">上海迪士尼</a></li>
+											<li><a href="#" title="宁波方特">宁波方特</a></li>
 										</ul>										
 									</li>
 									<li class="pull-left clearfix" style="width: 479px;">
 										<p><a href="#" class="a1">小贴士</a></p>
 										<ul class="ul1">
-											<li><a href="${pageContext.request.contextPath}/deskTravel/tieshi1.do" title="去西藏旅行该准备什么">去西藏旅行该准备什么</a></li>
-											<li><a href="${pageContext.request.contextPath}/deskTravel/tieshi2.do" title="去海边被晒伤了怎么办? ">去海边被晒伤了怎么办? </a></li>
+											<li><a href="#" title="夏季旅行该准备什么">夏季旅行该准备什么</a></li>
+											<li><a href="#" title="去海滩如何防止晒伤">去海滩如何防止晒伤</a></li>
 											<li><a href="#" title=""></a></li>
 											<li><a href="#" title=""></a></li>
 										</ul>										
@@ -69,7 +68,7 @@
 								
 						</ul>
 						<ul class="zcdl nav navbar-nav pull-right">
-							<li id="helloname"><a href="${pageContext.request.contextPath}/perfectInfo/render.do" >${current_user.name}</a></li>
+							<li id="helloname"><a href="#">${current_user.name}</a></li>
 							<li id="tuichu"><a href="${pageContext.request.contextPath}/logout.do">退出</a></li>
 						</ul>
 					</div>					
@@ -79,35 +78,18 @@
 		</header>
 		
 		<div class="main">
-		  	  	<div class="main1">
-				<div class="container">
-					<div class="b1">
-						 <div class="col-lg-12" >
-						    <div class="input-group col-lg-6" style="margin:auto;">
-						      <input type="text" class="form-control" id="searchBook" placeholder="输入书名、作者">
-						      <span class="input-group-btn">
-						        <button class="btn btn-info" type="button" id="btn_search"><a class="glyphicon glyphicon-search"></a></button>
-						      </span>
-					
-						    </div>
-						  
-						  </div>
-						  <br>
-						<hr />
-					</div>
-				</div>
-			</div>
-          <div class="main2 container border">
+	
+          <div class="main2 container border" style="margin:30px auto;">
              <div class="col-lg-12 ">
 					<div class="col-lg-3 ">
-					 <img src="${pageContext.request.contextPath}/output/${book.picUrl}" style="display: block;width: 200px;margin:30px auto;">
+					 <img src="${pageContext.request.contextPath}/output/${travel.picUrl}" style="display: block;width: 200px;margin:30px auto;">
 					</div>
 					<div class="col-lg-9  " style="line-height:24px;">
-					    <p class="book_detail_book_name">${book.bookName}&nbsp;&nbsp;&nbsp;<c:if test="${mybook eq false}"><a href="${pageContext.request.contextPath}/deskBook/addMybook.do?bookId=${book.id}" type="button" class="btn btn-success">添加到我的书架</a></c:if></p>
-					    <p>作　者：	${book.author}</p>
-					    <p>出版社：	${book.publics}</p>
-						<p>出版日：	${book.publicDate}</p>
-						<p>简  介：	${book.descr}</p>
+					    <p class="book_detail_book_name">${travel.touristName}</p>
+					    <p>所在城市：	${travel.city}</p>
+					    <p>具体位置：	${travel.adress}</p>
+						<p>平均消费：	${travel.price}/人</p>
+						<p>简  介：	${travel.remark}</p>
 						
 						
 					</div>
@@ -116,14 +98,14 @@
 			  <div class="main2 container" >
 	            <div class="container" style="overflow: hidden;margin: 30px auto;">
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="c11-1">
-							<h1 class="hh1" style="font-size: 20px;">添加书评</h1>	
+							<h1 class="hh1" style="font-size: 20px;">想说的话</h1>	
 							
 						</div>						
 				</div>
 				<div style="border:1px solid #ccc;padding: 30px;border-radius: 5px;height: 250px">
 				<div class="form-group" >
-    				 <input type="hidden" value="${book.id }" id="bookId"/>
-   					 <textarea class="form-control" rows="5" placeholder="请输入您的评论" id="bookComment"></textarea>
+    				 <input type="hidden" value="${travel.id }" id="bookId"/>
+   					 <textarea class="form-control" rows="5" placeholder="请输入" id="bookComment"></textarea>
                  
 			         <button type="button" class="btn btn-danger" id="bookCommnetBtn" style="margin: 30px; float: right;">提交</button>
 			    
@@ -185,5 +167,48 @@
 	</body>	
 	<script>
 	var path='${pageContext.request.contextPath}';
+	$(function(){
+	   	$("#bookCommnetBtn").on('click',function(){
+	   		var bookId = $("#bookId").val();
+	   		var comment = $("#bookComment").val();
+	   		if(comment==""){
+	   			alert("请输入内容");
+	   		}
+	   		$.ajax({
+	   			type:'post',
+	   			url:path+'/deskTravel/addTravelComment.do',
+	   			data:{'travelId':bookId,'comment':comment},
+	   			dataType:'json',
+	   			success:function(data){
+	   				if(data.code==1){
+	   					window.location.reload();
+	   				}else{
+	   					alert("保存失败");
+	   				}
+	   			}
+	   		});
+	   		
+	   	});
+		
+	   	//赞一下
+	   	$(".zanyixia").on('click',function(){
+	   		var pariseNum = $(this).attr("data-cid");
+	   		var number = parseInt(pariseNum)+1;
+	   		var commentId = $(this).attr("data-id");
+	   		$.ajax({
+	   			type:'post',
+	   			url:path+'/deskTravel/zanyixa.do',
+	   			data:{'number':number,'commentId':commentId},
+	   			dataType:'json',
+	   			success:function(data){
+	   				if(data.code==1){
+	   					window.location.reload();
+	   				}else{
+	   					alert("点赞失败");
+	   				}
+	   			}
+	   		});
+	   	});
+	})
 	</script>
 </html>

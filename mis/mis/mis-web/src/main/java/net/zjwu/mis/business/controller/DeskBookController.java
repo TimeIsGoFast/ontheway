@@ -111,6 +111,7 @@ public class DeskBookController {
 			bc.setContent(comment);
 			bc.setFromUid(user.getUid());
 			bc.setName(user.getName());
+			bc.setRemark(user.getPicUrl());
 			bc.setPraise(0);
 			bc.setCommentDate(dateTime);
 			bookCommentService.save(bc);

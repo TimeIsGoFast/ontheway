@@ -4,6 +4,7 @@ $(function(){
    		
 })
 
+
 /*顶部导航滑过显示*/
 $(function(){
 	$(".wd1").hover(function(){
@@ -43,12 +44,9 @@ $(function(){
 
 //bookDatil
 $(function(){
-   	$("#bookCommnetBtn").on('click',function(){
+   	$("#bookCommnetBtn").on('click',function()){
    		var bookId = $("#bookId").val();
    		var comment = $("#bookComment").val();
-   		if(comment==""){
-   			alert("请输入内容");
-   		}
    		$.ajax({
    			type:'post',
    			url:path+'/deskBook/addBookComment.do',
@@ -56,32 +54,13 @@ $(function(){
    			dataType:'json',
    			success:function(data){
    				if(data.code==1){
-   					window.location.reload();
+   					window.reload();
    				}else{
    					alert("保存失败");
    				}
    			}
    		});
    		
-   	});
+   	}
 	
-   	//赞一下
-   	$(".zanyixia").on('click',function(){
-   		var pariseNum = $(this).attr("data-cid");
-   		var number = parseInt(pariseNum)+1;
-   		var commentId = $(this).attr("data-id");
-   		$.ajax({
-   			type:'post',
-   			url:path+'/deskBook/zanyixa.do',
-   			data:{'number':number,'commentId':commentId},
-   			dataType:'json',
-   			success:function(data){
-   				if(data.code==1){
-   					window.location.reload();
-   				}else{
-   					alert("点赞失败");
-   				}
-   			}
-   		});
-   	});
 })
