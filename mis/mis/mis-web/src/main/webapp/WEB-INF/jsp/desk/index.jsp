@@ -29,6 +29,7 @@
 					</video>
 				</div>
 				<div class="cover">
+				
 					
 					<div class="container cc1">
 						<div class="cover1 col-lg-6 col-md-6 pull-right" >
