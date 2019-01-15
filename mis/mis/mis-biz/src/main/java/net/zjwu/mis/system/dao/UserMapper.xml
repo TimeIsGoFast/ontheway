@@ -68,4 +68,10 @@
   where uid=#{uid}
   </select>
   
+  
+  <select id="getUserByMail" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select 
+    *
+    from t_s_user where mail=#{mail}
+  </select>
 </mapper>

@@ -116,6 +116,6 @@ public class UserController extends BaseController<User> {
 		return rs;
 	}
 	
-	//userInfoRender
+	
 	
 }

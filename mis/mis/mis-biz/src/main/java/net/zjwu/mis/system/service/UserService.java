@@ -27,4 +27,7 @@ public interface UserService extends BaseService<User>{
 	void initUserRole(Integer id, int i);
 
 	int updateByself(User user);
+	
+	User getUserByMail(String mail);
+	
 }

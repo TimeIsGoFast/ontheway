@@ -98,4 +98,9 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 	}
 	
 	
+	@Override
+	public User getUserByMail(String mail) {
+		return userMapper.getUserByUid(mail);
+	}
+	
 }
