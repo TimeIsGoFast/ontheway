@@ -44,7 +44,7 @@ $(function(){
 
 //bookDatil
 $(function(){
-   	$("#bookCommnetBtn").on('click',function()){
+   	$("#bookCommnetBtn").on('click',function(){
    		var bookId = $("#bookId").val();
    		var comment = $("#bookComment").val();
    		$.ajax({
@@ -61,6 +61,6 @@ $(function(){
    			}
    		});
    		
-   	}
+   	});
 	
 })

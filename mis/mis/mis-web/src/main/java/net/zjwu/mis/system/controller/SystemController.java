@@ -12,6 +12,7 @@ import net.zjwu.mis.system.service.UserService;
 import net.zjwu.mis.system.vo.Result;
 import net.zjwu.mis.utils.SpringUtil;
 
+import org.apache.poi.util.SystemOutLogger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.LockedAccountException;
@@ -90,4 +91,19 @@ public class SystemController {
 		}
 
 	}
+	
+	@RequestMapping(value = "anon/searchPwd")
+	@ResponseBody
+	public String searchPwdByUid(User user,Model model){
+		User user1 = userService.getUserByUid(user.getUid());
+		model.addAttribute("user",user1);
+		return user1.getPassword();
+
+	}
+	
+	@RequestMapping(value = "/forgetPwd")
+	public String forgetPwd() {
+		return "forgetPwd";
+	}
+		
 }

@@ -13,4 +13,6 @@ public interface UserMapper extends Mapper<User> {
 	List<User> getUsersByRoleId(int roleId);
 
 	void updateByself(User user);
+	
+	User getUserByMail(String mail);
 }
