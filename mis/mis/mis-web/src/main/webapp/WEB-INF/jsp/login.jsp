@@ -11,10 +11,12 @@
 		<link rel="stylesheet" href="${pageContext.request.contextPath}/static/desk/css/daohang.css" />
 		<script src="${pageContext.request.contextPath}/static/js/jquery-2.1.1.min.js"></script>	
 		<script type="text/javascript" src="${pageContext.request.contextPath}/static/desk/js/bootstrap.js" ></script>
-			<script type="text/javascript" src="${pageContext.request.contextPath}/static/desk/js/templet.js" ></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/static/desk/js/templet.js" ></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/static/js/jquery.cookie.js" ></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/static/js/jquery.base64.js" ></script>
 		<title>登录</title>
 	</head>
-	<body>
+	<body onload="getCookie();">
 		<div id="main">
 			<nav class=" navbar-inverse" id="daohang">
 				<div class="daohang">
@@ -39,7 +41,7 @@
 				<div class="c3">
 					<form id="fm">
 						<div class="form-group">
-    						<label for="usernameoremail">用户名或邮箱&nbsp;&nbsp;<span id="error_message" ></span></label>
+    						<label for="usernameoremail">用户名&nbsp;&nbsp;<span id="error_message" ></span></label>
     						<input type="text" class="form-control" name="username" id="username">
   						</div>
   						<div class="form-group">
@@ -57,7 +59,7 @@
 						</div>
 						
 						<div class="c3-3 clearfix">
-							<a href="" class="pull-right">忘记密码？点这里找回</a>
+							<a href="${pageContext.request.contextPath}/forgetPwd.do"  class="pull-right">忘记密码？点这里找回</a>
 						</div>
 					</form>
 				</div>
@@ -68,8 +70,68 @@
 	</body>
 	<script type="text/javascript"
 	src="${pageContext.request.contextPath}/static/js/jquery.easyui.min.js"></script>
+	
+	
 	<script>
-	   var loginUrl = 'login.do';
+	//设置cookie  
+    function setCookie(){
+        var loginCode = $("#username").val(); //获取用户名信息    
+        var pwd = $("#password").val(); //获取登陆密码信息    
+        var checked = $("input[type='checkbox']").is(':checked');//获取“是否记住密码”复选框  
+        console.log("setCookie方法是否记住密码："+checked);
+        console.log(loginCode);
+        console.log(pwd);
+        if(checked){ //判断是否选中了“记住密码”复选框    
+            //设置cookie过期时间
+            var date = new Date();
+            date.setTime(date.getTime()+3600000*1000);//只能这么写，60表示60秒钟
+            //console.log("cookie过期时间："+date);
+            $.cookie("login_code",loginCode,{ expires: date, path: '/' });//调用jquery.cookie.js中的方法设置cookie中的用户名    
+            $.cookie("pwd",$.base64.encode(pwd),{ expires: date, path: '/' });//调用jquery.cookie.js中的方法设置cookie中的登陆密码，并使用base64（jquery.base64.js）进行加密
+        }else{
+            $.cookie("login_code", null);
+            $.cookie("pwd", null);
+        }
+    }
+
+    //清除所有cookie函数
+    function clearAllCookie() {
+        var date=new Date();
+        date.setTime(date.getTime()-10000);
+        var keys=document.cookie.match(/[^ =;]+(?=\=)/g);
+        console.log("需要删除的cookie名字："+keys);
+        if (keys) {
+            for (var i =  keys.length; i--;)
+                document.cookie=keys[i]+"=0; expire="+date.toGMTString()+"; path=/";
+        }
+    }
+    //获取cookie    
+    function getCookie(){
+        var loginCode = $.cookie("login_code"); //获取cookie中的用户名    
+        var pwd =  $.cookie("pwd"); //获取cookie中的登陆密码  
+        console.log("获取cookie:账户："+loginCode);
+        console.log("获取cookie:密码："+pwd);
+        if (!loginCode||loginCode==0) {
+            console.log("账户："+!loginCode);
+            //alert("请输出内容！");
+        }else{
+            $("#username").val(loginCode);
+        }
+        if(!pwd||pwd==0){
+            console.log("密码："+!pwd);
+        }else{
+            //密码存在的话把密码填充到密码文本框    
+            //console.log("密码解密后："+$.base64.decode(pwd));
+            $("#password").val($.base64.decode(pwd));
+            //密码存在的话把“记住用户名和密码”复选框勾选住    
+            $("[name='rememberMe']").attr("checked","true");
+        }
+
+    }
+	
+	
+	
+	    var loginUrl = 'login.do';
 		var successUrl = 'index.do';
 		
 		function login() {
@@ -78,6 +140,9 @@
 			onSubmit : function() {
 				return $(this).form('validate');
 			},
+			
+			
+			
 			success : function(result) {
 				var result = eval('(' + result + ')');
 				if (result.success) {
@@ -87,7 +152,21 @@
 				}
 			}
 		}); 
-	
+ 
+		 //判断是否选中复选框，如果选中，添加cookie  
+		 var jizhupwd=$("input[type='checkbox']").is(':checked');
+		 console.log("是否记住密码："+jizhupwd);
+		// alert(jizhupwd);
+		 if(jizhupwd){
+		     //添加cookie    
+		     setCookie();
+		 }else{
+		     clearAllCookie();
+		 }
+			
 		}   
+		
+		
+		
 	</script>
 </html>

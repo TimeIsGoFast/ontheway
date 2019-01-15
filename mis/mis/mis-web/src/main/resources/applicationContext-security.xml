@@ -50,6 +50,7 @@
 				/static/** =anon
 				/renderLogin**=anon
 				/register**=anon
+				/forgetPwd**=anon
 				/login** = anon
 				/logout** = anon
 				/403** = anon
