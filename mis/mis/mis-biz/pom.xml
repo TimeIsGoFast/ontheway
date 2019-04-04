@@ -73,6 +73,10 @@
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
 		</dependency>
+		<dependency>
+		    <groupId>org.quartz-scheduler</groupId>
+		    <artifactId>quartz</artifactId>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
